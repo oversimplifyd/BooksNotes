@@ -1,0 +1,333 @@
+___________________________________________ 		__________________________________________
+				 	    MATT ZANDSTRAS
+___________________________________________              __________________________________________
+
+tHE MAJOR DIFFERENCE BETWEEN hp 4 AND 5 is that in 4 objects treated by VALUES while in 5 they are treated as REFERENCE.. 
+
+"The famous PERL motto: There is more than one way to do it. 
+
+In PHP 4 the 'var" keyword i used instead of public so for backward  compartibility, PHP 5 accepts te use of "var" as a replacement for public. 
+
+IN PHP, properties can be added to an object on "the fly" (Amazing)... Don't Use It. (BAD PRACTICE) 
+
+All methods in PHP 4 are implicitly public.
+
+The $this pseudo-variable is the mechanism by which a class can refer to an OBJECT INSTANCE. 
+
+
+Enforcing Object Types in Method Declaration:--------
+Php primitive type checker functions 
+is_integer()
+is_null() - I use this. 
+is_string() 
+is_bool() 
+is_double()
+is_resouce()
+is_array() - I use this. 
+is_object() 
+
+Enformcing in PHP 5 comes in tow ways 
+- type checking and 
+  This simply is a way of checking and making sure that the passed argument is of the required primitive types listed above. 
+
+- type hinting (introduced in PHP 5): This works on objects and array but does not work on strings, ints and other primitive types.
+  it automatically does type checking by simply adding an  "hint" before the argument name (Shape $shapes) (array $myArray)... 
+
+- Derived classes can extend and also override the functionality of their parent classes.  
+
+- the "::" is used intead of "->" in the context of a class. while "->" is sued in the context of object to refereces properties and methods. 
+
+- As a generbased on the usage  of these proprties.al rule ("err on the side of privacy") that is make every properties 'private" at first then later relaxx this visbility
+aND AS FOR METHODS, MOST OF THE TIME THEY ARE ALWAYS PUBLIC OR PROTECTED..(fOR MOST USE). eXCEPT THOSE THAT ARE USED TO MODIFY INTERNAL CLASS CONFIGURATION. THAT IS, USED LOCALLY.
+
+
+CHAPTER FOUR (Advanced Features).... 
+- static cannot be used in php 4 (can only be used in php 5) 
+- parent:: (Accessing properties from a super class) 
+- self:: (Accessing static properties from the same class) 
+- You cannot use the "$this->" pseudo-variable in a static method 
+
+
+Constant Properties.... (PHP 5)
+Constants in PHP are declared with "const" "variable name(UPPERCASE)" without the dollar sign. 
+Like static properties, Tey can only be accessed via class and not an instance of a class 
+Constants in PHP only accept primitive types. Objects should not be assigned to a constant. 
+
+
+Abstract Classes ....(PHP 5)
+Abstract classes are declared with "abstract" 
+They should not be instantiated 
+IF a method is defined as "abstract" in an abstract class. It hsould contain no implementation and therefore, any child class or derived 
+class that wantsto extend this abstract class MUST implement all abstract methods. Abstract classes may contain implemented methods too. 
+
+
+Interfaces.... (PHP 5)
+An interface can only define functionality, it can never implement it. They are just like templates...
+It can contain fields and method declaratioin but not method bodies. 
+A class can only extend one class but implement several interfaces in PHP5 
+
+
+Late Static Binding ... (PHP 5)
+	This is Cool..!!! 
+Pattern Name: Identity Map 
+
+	abstract class DomainObject {
+		public static function create() {
+			return new self();
+		}	
+	} 
+This actually returns a DomainObject instance which is the contained class rather than the linked class. 
+
+		abstract class DomainObject {
+		public static function create() {
+			return new static();			// Take not of static 
+		}	
+	} 
+
+This return an instance of te child/derived class which is the linked class rather than the class the create function is contained.
+
+Static is also used to access static fiedls/methods from a non-static context. As in, static::(method_name or variable_name).
+
+Exceptions... (PHP 5) 
+These are special objects. Objects of type EXCEPTION are designed to handle and report ERROR information. 
+This class provides simply error notification and debugging. 
+The exception class accepts two arguments in its constructor which are
+- the error message 
+- the error code 
+It also defines functions such as 
+getMessage() 
+getLine9) 
+getPrevious()
+getTrace9)
+getFile()
+getCode()
+--toString() 
+
+Execution is halted at the point where Exception is thrown.. 
+-  "throw new Exception(""); 
+- Exception can be caught in a calling code using "try..catch" clause 
+
+
+Classes nd Methods declared "FINAL" can neither be subclassed nor overriden.. 
+
+ INTERCEPTORS / MAGIC METHODS (Don't trust MAGIC) .. PHP 5 
+These are used to for safe-handling of methods. 
+__call() - This is used to safely handle a call to an undefined method. That is what should be happen if a method not defined by this class is called by the client code. 
+__get() - This is invokved when a client code is trying to get values of undefined peroperites. (This is used to define what should hapen if this happens). 
+__set() - Invoked when the client code is trying to set value of a nundefined property. 
+__isset()  
+
+Destructors 
+Called before an object is garbage collected (that is cleared from memeory).. 
+With this you can quikly do some stuff before this object is finally gc(d).
+
+
+CLONE 
+The "clone" is used to copy objects. YOu can declare a __clone function in the object from which this is copied from in order to reset variables for other copy of this object. 
+	class Book {
+		private $price; 
+		function __construct($price){
+			$this->price = $price; 
+		}
+		
+		public function gePrice(){
+			return $this->price; 
+		}
+		
+		public function setPrice($amount){
+			$this->price = $amount;
+		}
+		
+		public function __clone(){
+			$this->price = 0; 
+		}
+	}
+	
+	$storybook = new Book(40);
+	$storybook->getPrice(); // This will return N40 
+	
+	$anotherbook = clone $storybook; // This creates another copy of book but now becaus of our __clone function in the book class this copied object has it's new price to be N0; 
+	$antherBook->setPrice(80); 
+	
+	For cloning objects containig objects see page 87. V.simple too. 
+	So... Cool!!!!!! 	
+
+
+__toString is used to safe-handle cases when the object is treated like a string (That is, may be when functions like print, echo and some other string related functions are called on an instance of the class or the object. 
+Define __toString in your class and return whatever you want to happen when the instance of the class is treated like a string. 
+
+
+CALLBACKS / Anonymous Functions
+$variablename = function($argument(s0){ //codes }; (Notice the the colon at the back of the "}'
+
+
+
+CHAPTER FIVE 
+Object Tools 
+
+Namespaces... 
+Namespaces are used for class naming convention and class organization in PHP 5. This is used to avoid naming confllicts . 
+To namespace a file... 
+- namespace (namespace name); 
+- Classes used within the namespace in which they are defined does not need  to be namespace before callling. 
+- To use a class outside of its namespace "/class_namesapace/className"; 
+- You  can also use an alias for a namespace to shorten calls in anther namespace. 
+	USE "{no back slash} namesapce_className AS newName";
+- Files/Classes not nmespaced does not need to be prefixed wiht a namepsace. they can be resolved directly. They are in the global scope. 
+- There are two ways of namespacing one of which has been discussed above. The other way is to use braces. This helps to have more than one namespace in a file.  
+- Only one style of namespacing is permitted per file. Namespace without names tells the system the enclosed classes or class is in the global scope. 
+
+File organizaton is safer done with the require and require_once statements. 
+See page 98 for MORE...
+
+ome useful classa and object functinos 
+class_exist() - checks if a class exists 
+get_class() - This accepts an objects and get the class the object's belongs to 
+get_declared_classes - get all declared classes 
+instanceof(), is_a()  - checks if the passed object is an instanceof a this class 
+get_class_methods()v - returns an array lilsting all methods defeined on the class
+method_exists() - checks if a method exists
+get_class_vars() - gets all variables defined in this class 
+get_parent_class() - checks the parent of this class 
+is_subclass_of() - checks the object class if it is a subclass of the second argument 
+class_implements() - Checks all interfaces implmented by this class
+
+
+Reflection API
+It is used to analyze classes, methods and functions. 
+Note: Reflection API should eb used as opposed to objects and classes functinos for testing/analyzing classes and functions. This is because of its reachability and wide-usage
+
+Reflection::export() - This method dumps information about the result of a call to a reflection object. 
+
+Reflection Classes:... (Some of them can also be used to test interfaces). 
+ReflectionClass - 
+ReflectionMethod - 
+ReflectioinProperty - 
+ReflectionException - 
+ReflectionExtension 
+ReflectionParameter 
+ReflectionFunction 
+
+Reflection is WHAO!!!There are more of this in php manual... Re-read page 94 (Using Reflection API) I kind of love the codes (so clean)
+
+
+CHAPTER SIX (Objects and Designs) 
+Your codes should be loosely coupled and highly cohesive... 
+First start be deciding the classes that will in your system and their distinct relationships or interoperability.
+- Find the THINGS (Real world tihngs) in your sytem and construct their agency through methods. 
+- Think of a class as having a responsibility and to make that responsibility as singular and focused as possible. 
+- It is said that a calss shoudld be described in less than 25 words with sparing usage of "and" or "or" statements.If you find yourself
+	using more of these it's time to consider sharing up resposiblity by having new classes. 
+- Avoid the religious adherence to design rules, they are not a substitute for analyzing the problem before you.  
+- Avoid tight coupling (A case where a change in one discrete part of the system will necessitate a change in other components) 
+- Go for hihgh cohesion (Where proximate or close procedures are broght together)..  
+
+Key Object Oreinted Design Concept 
+*** Polymorphism - The ability of different objects to respond the same method call differently.... The use of extensive conditionals 
+ signals the need for polymorphism 
+*** Encapsulation: This is a concept of hiding data and functionality from client.
+- simplest level of its usage is using 'private and protected" this prevent the accidental corruption of object data by restricting access.
+- Another level of encapsualtion is defining enforcing central-common mechanism using intefaces..This makes all children independnet and makes the interface the MASTER 
+- Make each part as INDEPENDENT as possible from its peers. 
+- Think in terms of abstract base classes rather than concrete classes.. 
+
+
+132 - THE UML 
+Unified mODELLING lANA
+UML IS used to describe classes or class diagrams 
++ - signifies public 
+- - signifies private 
+# - signifies protected (for property/method names) 
+
+- Abstract classes are written in italics or (declared abstract in a curly braces) 
+- Interfaces are declared using a stereotype (<<interface>> (interface name). 
+Note: While UML is class based, a sequence diagram is object based. 
+
+
+Part 3 - PATTERNS
+
+
+
+
+
+
+Note: Code Division of Labour is COOL!) Separation of concerns...
+	Visibility allows  you to expose methods/properites  that are required by the client. 
+	Classes are merely templates  for objects... 
+
+Note: A setter class must expect just a SINGLE arguments (Eitherin form ofstring or objects)  (Good convention/pracitice). 
+
+PDO - PHP Data Object 
+	
+Thoughtful..--- 
+I think abstraction should be considered when working with several clsses having common properties or methods., 
+ 
+
+Books to Read: 
+Martin Fowler - Software archeitecute and design patterns 
+		Distilled UML 
+
+ 		The pragmatic Programmer 
+
+
+
+
+
+
+___________________________________________ 		__________________________________________
+				 	    HASIN HAYDER
+___________________________________________              __________________________________________
+
+Use static members as sparingly as possible... That is, use them except when absolutely necessary. 
+
+It's a good practice to access class properties using accessor methods instead of directly setting or getting their value.(Which is the main theme of encapsulation). 
+
+The more your practice, the more efficient you become. 
+
+This line of code handles all error-related exceptions 
+			
+		<?php
+			function exceptions_error_handler($severity, $message,
+				$filename, $lineno) {
+				throw new ErrorException($message, 0, $severity,
+				$filename, $lineno);
+			}
+			set_error_handler('exceptions_error_handler');
+		 ?>
+
+Array objects wraps the regular  array and gives an OO flavor 
+
+page 70
+SERIALIZATION 
+Serialization is the process of persissting the state of an object either in a file or a variable.. 
+You have to unserialize a serialized object to be able to use it. Note that the state of a static property cannot be persisted... 
+To be able to use a serialized object you have to include it's containing class. 
+The magic methods __wakeup and __sleep makes it posible to serialize static data. 
+
+Object Cloning 
+PHP5 supports "clone" which treats every copied instnace distinctly.. 
+
+OBJECT CHAINING 
+PHP5 supports method chaining see page 77
+
+Note: An object exists only for as long as the script exists. 
+Another good way to store the state of an object is by caching.. PHP supports memcache 9Memcach also has java, c, rupy, python ports). 
+
+
+Chapter Four 
+DESIGN PATTERNS 
+Patten 				Procedure					Goal
+Strategy Pattern 		Interface 					Reduce code to the beareust minimum using polymorphysm 
+Factory Pattern 		Interface/Abstract C				Hide implementation details and complexity from the outside world. Encapsulating Complexities.
+AbstractFactory 		Abstraction makes it possible for
+				concrete classes to share the same standard	Creating common standard for all concrete classes 
+Adapter Pattern 		
+Singleton Pattern 		static property.. to track changes in instances Deliver only one instance of an object no matter how many times you instantaited it. (It improves application performance) 
+Iterator Pattern 		Interface 					Used to manipulate collection easily..
+Observer Pattern 		observable/observer objects			This is used for event driven appliations.. In order to trigger all registered event handlers whenver an even occurs.. 
+Proxy Pattern / Lazy Loading	
+
+Page 99 
+
+
+
