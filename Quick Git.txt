@@ -1,0 +1,113 @@
+YET ANOTHER GIT
+-- "pwd- shows the working directory witout using the terminal from the bash 
+- "ls" lists the content of the current directory 
+- cd to the directory (All these works without having to another terminal from the git bash). 
+- "git init" 
+- "git status" 
+- ".gitignore' - put the name of any files or (directory/) you want git to ignore (that is, you don't want git to track). 
+- git add . or git add * adds all files in the current working directory
+- "git log" shows all commits that has been made
+- "git log --oneline" shows a summarized version of git log 
+
+- "git diff" displays what has changed between the listed commits (git diff comit_id commit_id2) 
+Nnote: "git diff" can also be used to check the differences between our working directory and the last commit. To do that just use the "git diff" command.  
+
+- "git commit -a" does both adding to the staging area (tracking) and committing at the same time. 
+- " git commit -m ['comment']
+- " git commit -a -m ['comment']
+- "git add -p"
+
+PATCH MODE 
+This is used to divide commits or files to be staged into small chunks before commiting. 
+This is done using the "git add -p" With this command, you can easily select the chnages you want to commit leaving out those you don't want to commit. 
+
+BRANCHING 
+This is used to isolate chanes or separate one chane from on  a project without affecting one another It's used best to add/test new features with theability  to still be able to retrieve old branches with old features and staes (State Manager I'll call it). 
+Note: What is done on one branch WILL not been seen on other branches (Not even the master). Therefore, changes made in one branch is independent of another branch. All changes must be committed befor checkout a branch (switching a branch). 
+
+
+Creae a New Branch 
+ - git branch ['branch_name'] 
+
+Check branch status 
+- git branch 
+
+Deletinga branch 
+git branch -d (branch name) - deletes a branch
+git branch -D (branch name) - deletes a branch
+
+git -rm files/filename - removes file in a branch 
+
+Switching between branches 
+- git checkout ['branchname']
+
+Note: Not only branches could be checked out, you can also checkout a particular commit and revert back as well. To inspect changes before the commit was made.... (Powerful!!!)
+- git checkout comitID
+
+Merging two brahcnes 
+* Change to the branch you want to merge into and call the branch you want merge from 
+- git merge ['branch to merge from']  (After this, edit the code, remove those things you dont want and commit on the current branc) 
+
+
+HEAD 
+There is no limit to then umber of branches each checkout can have. What is simply done is the HEAD pointer is moved to the new checked-out branch so as to enable other branches to be created from this branch 
+
+		Master (HEAD)
+
+			Development(HEAD)
+
+				Development-1 
+				Development-2 
+
+			Test (HEAD) 
+
+				Test-1
+				tEST-2
+				Test-3 (HEAD) 
+
+					Test3-1
+					Test3-2
+				Test-4
+
+
+Creating a branch from a specific ommmit 
+once you are in the commit... 
+- git checkout -b "branch name" 
+
+Clearing 
+- clear (Clears the bash window) 
+
+Undoing Changes/Commits 
+Firstly, 
+Reversion can be done by 
+- checking out of a specific commit and specificying the file_name 
+- re commmiting 
+secondly, 
+To undo an entire commit 
+- git revert "commit name" -This automatically undo a commit" 
+
+GIT RESET 
+Git Reset drops things from your log (That is, it drops an entire commit entirely) 
+Be careful to use this on affected areas. 
+Modes of RESET includes 
+- soft 
+
+37489952 
+
+CLONING 
+git clone https://github.com/thrustapps/repo.git //Saves a local copy of the named file on your remote repository to your locatl repo. 
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+Note: To exit the vim editor type ":wq!" and enter
+Note: Each commit has a unique ID 
+Note: Commit early, commit often  (that is , commit whenever you have made reasonable change in our code). 
+Note2: Always write meaningful comments (Detailed Comments) for each on each commit
+Note3: Comments should be about what has changed, what hs been unchanged e.t.c
+
+git add remote origin (repo url) 
+git pull origin (branch) 
+git push origin (branch) 
+
+
+
