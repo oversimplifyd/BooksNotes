@@ -1,0 +1,108 @@
+
+
+//*****************************************
+//*****************************************
+//
+//		DESIGN PRINCIPLES 
+//
+//*****************************************
+//*****************************************
+
+
+Reduce Coupling 
+Increase Cohesion 
+Keep the level of abstraction as high as possible 
+
+
+
+
+Part 1 
+
+
+
+
+
+
+
+
+Part 2 
+Reduce Coupling where possible 
+
+Stamp Coupling - 
+	Issue: 		This occurs when COMPLETE DATA STRUCTURES are passed into methods as argument. This is not good as it passes both the needed fields and the unnecessary fields into this method.\
+	Solution: 	Pass interface instead 
+			Pass simply variables 
+	OON'T PASS UNNECESSARY COMPLEX ARGUMENTS 
+
+Data Coupling - 	
+	Issue:		This occurs when too much arguments are passed as into a method. 
+	Solution:	Reduce the number of arguments as much as possible. 
+	DON'T PASS UNNCESSARY MANY ARGUMENTS 
+
+Note: There is a trade-off between stamp and data coupling which is simply an increase in one will lead to a corresponsiding decreasin in the other. 
+
+Routine Coupling 
+
+Type Use Coupling 
+
+Import Coupling 
+	Issue: 		This occurs when you import a pacakage with all its classes when you only need one or two more classes from this package. 
+	SOLUTION:	Only import classes from a pacakage that you need. This is to prevent further modificaiton the package may be rom newer releases not to too affect your project. 
+
+External Couling:	
+	Issue:		This occures when your code calls an external resource such as the OS, hardware e.t.c. in more than one place whereas a change in the former will invariably cause a changei n so many points in your code. 
+	Solutioin:	THe Facade pattern helps to reduce this type of coupling 
+
+
+
+ABSTRACTION 
+Keep the level of abstraction as high as possible. 
+This helps by reducing complexity by providing an overview and essence of subsystems witout having to know the details. 
+It also helps with information hiding. 
+
+
+REUSABILITY 
+Increase reusability where possible. 
+Generalize your design as much as you can 
+
+
+REUSE EXISTING DESIGNS AND CODES WHERE POSSIBLE 
+
+DESIGN FOR FLEXIBILITY (DO NOT HARDCODE ANYTHING) 
+
+DONT' USE UNDOCUMENTED FEATURES 
+
+DONT USE LITTLE USED FEATURES (USE FEATURES OF LIBRARIES THAT IS WIDELY USED) 
+
+USE LANGUAGES THAT HAS IT SOURCE FROM MULTIPLE VENDORS. 
+
+AVOID THET USE OF FACILITIES THAT ARE SPECIFIC TO A PARTICULAR ENVIRONMENT 
+
+
+
+//*****************************************
+//*****************************************
+//
+//	SOFTWARE ARCHITECTURE 
+//
+//*****************************************
+//*****************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Favour Composition over iinheritance 
+

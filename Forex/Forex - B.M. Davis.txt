@@ -1,0 +1,124 @@
+Forex is 80% Psychological and 20% technical 
+
+The forex market is moved by emotions. The two core emotions are:
+		- FEAR 
+		- GREED 
+	Remember: 80% Psychological
+
+- Learn to be disciplined 
+- Dont trade with money you cannot afford to lose. 
+- Having learnt a new system, Paper Trade first.. 
+
+Terms 
+- The spread is the difference between the Bid(Sell) and the Ask(Ask)
+	* The spread of majore currencies is "3 pips"
+
+- In a currency pair (The first is called the "base currency" andt he other is called the "pricing currency").
+
+- Note that spread also indicates the difference in which the price of a currency pair can be bouth versus can besold.
+
+- Leverage helps you to control more money with actual less funds. 
+
+- Margin requirement is the amount of funds required by a foreign exchange dealer to begin buying or selling a set amount of currency. 
+
+- THe major pairs are the most liquid (Liquid in the sense that they are the most stable econoically and politically). 
+
+- All price movement is due to supply and demand 
+
+
+CANDLES 
+
+Doji - A doji is a type of candle in which its opening price = its closing price. It marks a weakening tend. 
+	
+	Dragonify Doji  - This is most significant in an overbought market 
+	Gravestone Doji - This is most significant in an oversold market 
+	
+	Generally, Dojis are warning signals of a possible CHANGE in trend DIRECTION 
+
+HAMMER 
+	An hammer is quiet similar to the Doji but unlike the Doji, a hammer has a daily range. 
+	
+	The potential of the strength of the hammer is dependent on 
+	- THE LENGTH of the prior trend 
+	- The volume of the daily range. that is the body of the hammer compared with the length of the shadows.
+	- fOR A GOOD HAMMER 
+		* the length of the shadow must be cnosiderably high 
+		* The volume of the body should be considered as well. 
+
+	A hammer can either be an 
+	- hammer (Bullish Trend (daily range color: Red Body), Bearish Trend (Daily range color: Green Body)). 
+
+	- inverted hammer (Bullish Trend (daily range color: Green Body), Bearish Trend (Daily range color: Red Body)). 
+
+LONG AND SHORT DAYS 
+Long days aer high volume candles with little shadows - They can be relevant to deterine continued trends 
+Short days are low volume bodies - This may mean the market is consolidating...
+
+Spinning Tops 
+These are candles with long shadows/wicks at both ends with small bodies. 
+	Spinning tops are considered NEUTRAL in a sideway market 
+	In a trending market with big moves spinning tops can be as relevant as a doji 
+	This works especially when spinning tops are followed by some days of Doji 
+
+Marubozu
+The marubozy is a candle that does not have a wick and has large volume
+	- The black marubozy is the most relevant as it signals 
+		- A bearish signal at the top of a topping trend 
+		- a warming signal even at the top of a long down trend. Which means prices may be at its peeak. 
+		Types of Marubozy 
+		- Closing Marubozy 
+		- Opening Marubozu
+
+
+When a trend is slowing it is BEST to stay off the market. 
+Three indications for a slowing trend are 
+		- dojis 
+		- spinning tops 
+		- hammers 
+
+SHADOWS 
+A good rule of thumb is that the longer the shadow, the more likely it is for the trend/market to reverse. 
+
+
+REVERSAL PATTERNS 
+a WELL ESTABLISHED TREND WILL NOT JUST TURN ON A DIME AND REVERS
+It will gradually lose steam which can b spotted using candles
+
+	Note: Most of these formations are strongly significant when they form at a resistant or support levels. 
+
+	- Bearish Engulfing 	2 day formation 
+	- Bullish Engulfing 	2 day formation 
+	- Hanging Man 		3 day formation  (Indicates a bearish reversal/slow down) That is forms on an up-trending market. 
+	- Bullish Piercing Line 2 day formation 
+	- Dark cloud Cover 	2 day formation 
+	- harami 		2 day formation 
+	- Shooting star 	3 day formation (Up trending market) 
+	- Evening STAR 		3 day forrmtion (uptrending market) 
+	- Morning Star 		3 day formation (downtrending market) 
+	- Tweezer bottoms and tops (These should not be traded alone unless accompanied by another reversal pattern
+
+
+	Bullish				Bearish
+	Hanging Man 			Hammer 
+	Shooting Star 			Inverted Hammer 
+
+	After the final part of this tutorial READ "READ FIRST FOREX" ON FUNDAMENTALS PAGE 47
+
+
+Prices drop much faster than they rise. 
+It usually takes a little longer for a trend to go bearish to bullish because fear is more stronger an emotion than greed. 
+
+
+CHart Patterns 
+
+Head and Shoulder Pattern 
+	- This is a reversal patttern which occurs at a top-trending market. 
+	- formation: two neckts (left and right) a head and a neck line. This formation is complete only when there is a head.
+
+Inverted Head and Shoulder - Same as above but occurs in a downtrend. 
+
+Wedges 
+
+
+
+

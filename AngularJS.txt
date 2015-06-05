@@ -1,0 +1,224 @@
+***************************************************
+***************************************************
+Angular JS - Codecademy 
+***************************************************
+***************************************************
+
+A Module 
+-	A module contains the different components of an AngularJS app. 
+-	Anuglar JS has directives which it uses to define application scopes.One of such directives is "ng-app"
+-	Directive also tells where the module will live. This is mostly in tags. 
+
+A Controller 
+-	A controller manages the app's data 
+-	A controler also helps to attache $this data to a specific scope.
+
+An Expression 
+An expression is used to display values on the page.
+Expression Syntax: 	"{{..Value to be displayed}}
+
+A Fileter 
+A filter formats the value of an expression. This is done using the "pipe" (|) 
+
+
+Summarily, 
+	A module has to be created that imports all anuglar re-usable components 
+	A scope have to be defined for this module to live. That is this anuglar application will only be accessible within the scope of this tab. That is accessibe to all descendants of this tags. 
+	<body ng-app ="myApp"> //where myApp is the name of the creted module. 
+		
+		<div ng-controller="myController> //This directive points to the controller that will be usedby this tag. 
+			{{ //Display Data from the controller}}	
+		</div>
+	</body> 
+
+	Note: Only descendants of a particular defined scope can use the controller's produce..
+
+Some Directives 
+ng-app    	 - Points to a module 
+ng-controller 	 - Points to a controller 	
+ng-repeat 	 - Repeats a data-item in the controller 
+ng-src 		 - Points to an image resource in the controller 
+ng-click 	
+
+
+
+
+***************************************************
+***************************************************
+Angular JS - Three House 
+***************************************************
+***************************************************
+There are two kinds of jaascript libraries 
+	- DOM manipuatlion libraries such as JQUERY which simply presents data based on a view and it is a one way data binding. 
+	- MVC frameworks libraries such as Anuglar JS which offers two way data binding which makes it possible to change views based on data and user interractions. 
+
+Four main compoenents of angular 
+	- Directives 
+	- Controlers 
+	- Factories 
+	- Filters
+
+Two-way data binding 
+Use the ng-model directive. This does binding of the view to the model such that any changes in both direction automatically reflects in both directio
+One way binding 
+Use the expression {{}} for this. This only makes it possible to read form the model for display in the view ONLY. 
+
+
+
+
+***************************************************
+***************************************************
+Angular JS - Chandermani
+***************************************************
+***************************************************
+It's a good practice to alwayys think deeply about the functionality of your app. This will largely reduce friction between the model, view and the controller. 
+
+
+- The controller manages the VIEW and the MODEL 
+
+
+- Creating a Module 
+	"angular.module("app", []);
+		where 	
+		"app" is the name of the module 
+		[] provides module dependecies.... COOL! 
+
+
+
+- Registering a controller with a module 
+		angular.module("app", []).controller('controllerName', 'controllerRealImplementation'); 
+
+
+- Register the View that must connects to the controller with the controller by using 
+		- ng-controller  = 'controllerName' withing the opening tags of this view top-element. 
+
+
+Interpolation Symbols and Directives
+	The interpolation symbol is {{..expression...}} 
+	They are used to link the view and the model for data extraction. 
+	An interpolation symbol may contain 
+		- modelel's data (literal expressions or variables) 
+		- functions 
+		- objects. 
+
+	Interpolation symbol can be used in this way 
+		- <>{{}}</> - as tags values 
+		- <div name={{..}}></div>  - elements attribute's value 
+		- <div {{..}} = value></div> - element's attribute name 
+
+
+Directives 
+Directives are used to extend the standard HTML vocabulary,, augment the html vocabulary and even enable us create new html elements. Cool!...
+- ng-model - binds a scope property to an HTML element. Such that changes in eithe  of the two entities automatically affects the other. - Taken! 
+- ng-click - listens for click event on an html element and invokes a given function in the controller.  
+- ng-app - instantiates an app 
+- ng-show - shows a given element based on the result value 
+* With directives, we can demarcate what part of HTML should use angular. 
+
+
+Expressions 
+	- Expressions aer evaluated against the SCOPE object 
+	- Expressions are forgiving that is an undefined variable will instead of give an error result to undefined or null. 
+	- Conditionals, loops and exceptions are not alllowed as an expression 
+	- Expressions can be filtered to produce a more desirable result. 
+	- Itenaries can be used instead of if/else/switch conditionals in an expression 
+	- functions can be used in an expression 
+	- Objects can be used in an expression 
+	- assignments can be made in an expression. 
+	Note: When an expression starts to become compleX MOVE IT INTO A CONTROLLER. 
+
+
+Bindings 
+Helps to bind the view nd the model. 
+
+
+Controllers 
+When you are writing controller never ever ever reference the DOM element in the controller use instead directives or create your own DOM. 
+
+
+SCOPE 
+The scope object is not the model but it references a model. 
+	- Batarang is a chrome extension that reveals information about the avaialble scopes of of an app. 
+	- All scoped objects are scoped 
+	- Scope objects bind the view and model together.
+	• Scope objects are almost always linked to a view element.
+	• There can be more than one scope object defined for an application. In fact,
+		in any decent size app there are a number of scopes active during any given time.
+	• More often than not, child scopes inherit from their parent scope and can access parent scope data.
+	
+	* The ng-controller creates a new scope. A new scope can also be created with some other specific directives..
+
+
+AngularJS Constructs 
+	- Controllers 
+	- Directives 
+	- Services 
+	- Filters 
+
+
+Services 
+Services are used to organize reusable chunk of codes that can be shared across controllers, directives, filters and services itself. 
+
+
+Filters 
+Filters are used to change data from format to another. 
+
+
+Organizing Angular Codes in Files 
+	- FILES Per Componenet Type: In this approache all controllers are kept in one file, directives in another file, services in another file and filters in another file with the right ".js" extension. 
+		* This is feasible for small or decent sized applications but unfeasible for large applications as everyting gets messy and out of control. 
+
+	- FOLDER per component Type: This encourages keeping each component in separate folders. 
+		* Works well for smaller projects too. 
+	
+	- FEATURE per component Type: This encourages separating features and making each features has its own components. 
+		* With this approach common code needed across each features can be placed in a common folder 
+		* This also gives room for modularization. COOL!
+
+
+NOTES: 
+* Create just ONE controller per page/view. But directives, filters and services can be shared across multiple views/page of d same feature. 
+* Models can be defined as colection of data whcih can be created using functions, objects or classes. Since Javascript does not support "classes" it will be siulatd using new classname({}); 
+* Dependency injection can be done via 1. Constructor Injection OR 22. property injection 
+
+MODULES 
+Modules are like containers for components we create. 
+
+AngularJS makes heavy use of dependency injection as such minifying angular codes will result an error as all white spaces, comments are removed and the the "$scope" injected can no longer be resolved as DI Object. 
+To handle this, we make use o annotation which aer 
+		1: $injection annotation 
+		2. inline annotation. This makes use of the [] construct. 
+
+- mimimize the number of propeties and functions you attach to the $scope object. Since these are required to be referenced in the VIEW. 
+
+$watch - Model Tracking infrastructure  (Packaged with angular just like $interval) 
+	- This is usually called on the $scope object since it is use to monitor changes in models with are binded to $scope. 
+$interval is also an angualar service 
+
+The promise API supports method chaining over nesting. It's cool anyway. 
+
+Stopped @ page 78 (Ng-src)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

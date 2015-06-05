@@ -1,0 +1,97 @@
+PHP DATA OBJECTS 
+PDO Extensions 
+DSN  - Data Source Names 9This is the string parameters accepted by a PDO constructor. 
+dsnS INCLUDE 
+
+Database Driver 
+Hostname 
+IP
+Database Name 
+Character Set 
+
+$do = new PDO("connection details"); //instantiates a new PDO 
+Note: It's a good practice to store these DSN in a different file and include it in the PDO FILE. 
+Note: It's always a good practice to wrap this connection within a try...catch to catch any conection eror. 
+
+
+$sql = "Statement...." //Note actual parameters should be represented with ":param" so as oto allow data binding using PDO 
+
+$do->prepare($sql); //Prepaes the sql for execution. 
+$do->bindValue("actual variable"); //This binds the actual value to the query 
+	bindValue - takes 
+	1. representation of the value to be bound 
+	2. actual value to be pound 
+	3. some PDO CONSTANT FILTERS 
+$bind->param - works as the bindValue bu I THINK can bind more than one value.
+
+$do->execute(); //Executes the query 
+DO result set can be queried using 
+	 fetch()
+	 fetchAll()
+	 //For the fetchAll and fetch functions PDO constants such as PDO:FETCH:NUM, FETCH:OBJ, FETCH:BOTH can be passed. 
+	 fetchColumn()
+	 fetchObject()
+
+PDO supports TRANSACTIONS which  ensures data INTEGRITY and CONSISTENCY. 
+With transactions all queries must be successfuully executed before terminations. If any one fails during the course of exeuction all fails too. 
+So ALL Success or NOTHING 
+
+	$pdo->beginTransaction(); 
+	- all prepartion statement 
+	- Value/parameter binding statements 
+	- execution statments. 
+	$pdo->commit();
+
+Multibyte String
+These are strings that are unlike the usual 8-bit character strings which normally occupies 1 byte of memory. 
+Some of them include very-very-very special characters like (a with an hyphen on top). 
+Since PHp only deals with  normal strings to handle multibyte strings you can use the "mbstring" extension. 
+
+	
+EXCEPTIONS 
+	- They can be used offensively to delegate responsiblity when a problem occurs. 
+	- They can be used defensively to anticpate and mitigate potential problems. 
+	Thown exceptions should be caught and handled gracefully. 
+	- Surround codes that  might throw an exception in a try/catch block to intercept and handle potential exceptions. 
+
+	* You can also subclass one of the built-in php exceptions to throw related exceptions and publish the rigt messags on instantiation. 
+		- Example include
+		- \RunTimeException 
+		- \LogicalException 
+
+Errors 
+	Always turn on error reporting.
+	• Display errors during development.
+	• Do not display errors during production.
+	• Log errors during development and production.
+
+
+From my view, i think erors are platform-specific while exceptions are users specific. 
+
+Development, Testing and Tuning
+Hosting: 
+	Shared Hosting Service e.g. whogohost
+	Virtual Private Servers 
+	Dedicated Servers 
+	Platform As A Service (PaaS)
+
+
+
+Stopped - Page 145 
+Read First Tomorrow: https://www.binpress.com/tutorial/php-bootstrapping-crash-course/146
+Read Second: Bitwise Operators bookmarked. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+Note: Log errors on PRODUCTION SERVER, Don't OUTPUT or log to STDOUT(Standard output) on producton server. You can log errors and and display in development environment. 
+Routing is just simply a way of soin a URL rewrite by decomposing the 1:1 correlation between a URL and the PHP script that corresponds to the URL. This enables URL  to be formated and decomposed and ..... 

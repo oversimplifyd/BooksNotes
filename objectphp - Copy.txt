@@ -327,7 +327,23 @@ Iterator Pattern 		Interface 					Used to manipulate collection easily..
 Observer Pattern 		observable/observer objects			This is used for event driven appliations.. In order to trigger all registered event handlers whenver an even occurs.. 
 Proxy Pattern / Lazy Loading	
 
-Page 99 
+Chapter Six 
+Standard PHP Library 
+ArrayIterator
 
+Note: PHP has a powerful feature of 
+	assigning by reference 
+		This makes it possible for the more than one variable to point to the same content. 
+		That is change made in one will automatially affect the other variables pointing tothe same content. 
+		$b = 50; 
+		$a = &$b;
+		
+		$a = 20; 
+		echo $a; // outputs 20
+		echo $b;  // outputs 20 
+		
 
+	passing by reference 
+	
 
+	returning by reference

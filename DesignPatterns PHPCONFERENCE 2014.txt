@@ -1,0 +1,89 @@
+SOLID Principle 
+S	Single Responsibility 
+O	Opened/Closed 
+L	Liskov substitution 
+I	Interface Segregation 
+D	Dependency Injection 
+
+S
+one class, One job.... and the class should be entirely encapsulated 
+
+O
+Softwarer entities (functions, classes, modules e.t.c.) should be open fo r EXTENSION and closed for MODIFICATION 
+	There are two kinds 
+	Meyer's Openc/close principle 
+	Polymorphic Open/Closed Principle 
+
+L
+Liskov substitution states that objects in a program should be replaceable with instances of their subtypes wthout altering the correctness of the program. 
+Simply.. put, always code to an INTERFACE (Josh Lockhart said this too).. 
+
+I
+Interface seggregation 
+Break up interface into small units. To avoid too much load and prevent slow execution. 
+The smaller the interface, the better. 
+
+D
+Dependency Inversion
+This states that high level modules should not depend on low level modules both should deend on abstraction. Abstraction should not depend on details but details should 
+depend on abstraaction. 
+
+
+DESIGN PATTERNS 
+
+Decorator 
+It promotes Composition over inheritance
+
+Mediator Pattern 
+It solves the problem of too many objects.. Which leads to TIGHT COUPLING (too many interdependency). 
+The mediator patten solves this by making one object mediate for all other object that is all other object communicates through this mediator object. 
+Mediator mediates between coleagues 
+
+Abstract Factory 
+This is used to create SIMPLE objects of which the CLIENT does not need to know anything about implementation and all type of the object has a common interface. 
+Coding to an interface also applies here. 
+
+Bulder Pattern 
+This is used to create more complex objects. 
+
+SinglTon pattenr 
+Creates ONLY ONE instance of an object. 
+
+Adapte and Facade Pattern 
+Adater translates interfaces it implements Lisklov substitution principle 
+
+Facade Pattern 
+Facades tie together unrelated componenets. 
+
+Note: While adapters create an interface for similar/related objects, facades create an interface for dissimilar/unrelated objects.
+
+
+Chain of Responsibility Pattern 
+
+Strategy Pattern 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Differences between class and types 
+class is d name of theobject 
+tye is d way d object behaves, its interfaces (a class available public methods)
+
+Remember Polymorphism is the ability of a function to be able to respond differently to differnt class. 
+The smaller d interface, d better d alication 
+Coding to an interface makes testing easy and possible. Note interface could be interface or abstract clases
