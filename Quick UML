@@ -1,0 +1,120 @@
+UML is use to MODEL SOFTWARE APPLICATIONS it is independent of programming language. 
+
+	THings 
+		Structural
+			CLass: Set of objects having similar responsibilities
+			Interface: specifies a set of operations that defines the responsiblity of a class
+			Collaboration: Defines interaction between elements. 
+			Use case represents a set of actions performed by a system for a specific goal.
+			Component: Describes all the physical part of a SYSTEM. 
+			NOde: a physical element thta aexists at run time 
+			
+		Behavioral
+			INteraction 
+			State Machine 
+		Grouping
+			Package (Groups structural and behavioural  
+		Annotational 
+			(used for comments and description e.g. Note;)
+	Reelationships  
+		Defines Association 
+		Dependency 
+		Association 
+		Realization 
+		Generalization 
+	Diagrams   
+
+Types of UML Modelling 
+	Structural MOdelling 
+		Class DIagram (THings and how they are assembled). 
+	Behavioural Modelling 
+		Models the interaction between the structural diaggrams and elements involved in a system. 
+		Activity Diagrams 
+		INteraction Diagrams 
+		Use Case DIagrams 
+	Architectural MOdelling 
+		Combines both structural model and behavioural modeling. package diagrams comes under this model. 
+
+
+NOTATIONS / THINGS 
+Structural Things
+	Class NOtation (SQUARE) 
+		Class Names 
+		Attributes (+public, #protected, -private) 
+		operations 
+		additioinal componenets (OPTIONAL) 
+
+	Object NOtation (SQUARE) 
+		The same as above but with an underlined class name. 
+		Remember that an object is an instance of a class. A class is the blue print of an object. 		
+	
+	Interface Notation (CIrcle) 
+		Circle, Name of INterface 
+
+	COllaboration NOtation: 
+		Dotted Eclipse 
+
+	Use Case NOtation 
+		Eclipse 
+
+	Actor Notation (A man-like image) 
+		INternal or external entities interacting with the system 
+
+	COmponenet Notatio (check it out i beg) 
+		A part of the system for which a UML diagram is drawn.
+
+	NOde (Cuboid) 
+		THe physical part of the system. 
+
+	Initial State (Starting point of a process shaded small circle) 
+		Small shaded circle reprsenting the beginning of a PROCESS 
+
+	End State (two circles one shaded the other unshaded 
+		Marks the end of a process. 
+
+Behavioural Things (Message exchange between UML components) 
+	INteraction 
+		Arrow with a one-shaded end. 
+	State Machine (Represents the different state changes invovled in a process) 
+		Rounded Rectangle 
+
+Package NOtationi (Groups all the components of a system) 
+	A big square with a small square appended on top. 
+
+Annotational (comments and brief description) 
+	A long rectange with one folded end. 
+
+Relationship 
+	Dependecy 
+		Dotted Arrow with the independent element at the nd of the arrow and the dependent at the other end. 
+		Dependent 		Independent 
+
+	Association 
+		Relationship between two or more elements in a syste. a doted arrow with two shaded heads. 
+
+	Generaalization (Shows a parent - child relationship)  
+		An arrow with an hollow head. 
+
+	
+A class diagram is used to model the static view of an application. 
+	Analysis and design of the static view of an application.
+	Describe responsibilities of a system.
+	Base for component and deployment diagrams.
+	Forward and reverse engineering.
+
+	
+	
+DIAGRAMMING 
+	Activity Diagrams 
+		Graphical representation of the stepwise activities and actions with support for choice, iteration and concurrency. 
+	Sequence DIagrams 
+		Sequence Diagrams is best used to represent message passing PARALLEL Processes. The vertical lines in this diagrams are called 			(lifelines) 
+	Use Case Diagrams 
+		THe main purpose of a use case  diagram is to show what processes are performed for which actors (users) 
+
+	All the above diagrams are types of behaviour diagrams. Remember we  also have structural diagrams which include class, object, component and 		deployment diagrams which simply represents a static view of the system at a point in time. While behaviour diagrams shoows a dynamic view of 		the system during a pocess. that is state changes, message passing e.t.c. 
+
+	
+	
+NOte: THe model is useless unless the purpose is depicted properly using NOTATIONS. 
+

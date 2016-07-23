@@ -1,0 +1,40 @@
+Hyper Text Transfer Protocol 
+	Request 
+		Request Line 
+		Request Header 
+	Response 
+		Status Line 
+		Response Header 
+		Content 
+
+Common HTTP Methods 
+	GET, POST, HEAD. The HEAD is used to send and receive headers without actual 		contents. That is if a head rquest is sent, no content is sent but response 		headers. 
+
+HTTP Status Code 
+	200	- Sucessful 
+	300	- Redirections
+	400	- Problem with Request 
+	500	- Problem with Server 
+		
+	*********************************************
+	302, 307	Moved Temporarily (May be when a site is down for maintenance) 
+	301		Moved Permanently 
+	304		This status code is sent if a request is made to the server with a 				if-modified-since header field and if this field value matches the 				last modified value on ther server http response for this 				particullar request. THerefore, no new content is sent but a 304 is 				sent so that the browser can display it's cached copy of this 				request since it has not been last modified. 	
+
+	404	Page not found 
+	403	Forbidden 
+	401	Authorization Required 
+
+	500	Internal Server Error
+ 
+Caching 
+	Browseer Cache - User Specific 
+	Proxy Cache - Not User Specific. Stays in between ther browser and the server. 
+
+		
+
+	
+
+
+
+

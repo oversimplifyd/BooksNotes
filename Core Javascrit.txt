@@ -1,0 +1,565 @@
+***************************************************************************************************************************
+***************************************************************************************************************************
+***************************************************************************************************************************
+				SECRET OF THE JAVASCRIPT NINJA (John Resig and Bear Bebault
+***************************************************************************************************************************
+***************************************************************************************************************************
+***************************************************************************************************************************
+
+
+Javascript best practices 
+
+Testing Skill 
+Performance Analysis 
+Debugging Skill 
+
+Debugging 
+	Logging 
+	Break Points 
+
+Testing 
+	Test Generation 
+		Test Cases 	jsbin.com
+			provides example test cases in which test suites can be tested on 
+		Test Suites 
+			Used to organize tests for repeatability and reproducibility 
+			The main aim of test suites is to aggregate all the tests that my code base might have into a single code base. 
+			So that they can be run in bulk and repeatedly.. \
+
+		Test Group
+		This is the collection of test suites. Note that a test suite must have an assertion. 
+		If a suite fails in d grou,d test grou fails.. Tests should be isolated 
+
+		Test Framework 
+			JsUnit, QUnit, Selenium. These are test frameworks just like JuNIT AND PHPUnit 
+			Jasmine is a more recent Test framework for javascript
+			
+Asynchronous Testing 
+Asynchrnus test are tests whse resuts wud cme back after a nondeterministic amount of time has passed
+
+
+Training 
+***************
+***************
+***************
+
+Capabilities of Objects 
+	- They can be constructed throughliterals 
+	- They can be passed as an argument to a function
+	- They can be returned as a value f a functiono 
+	- They can be dynamicaly created and assigned
+	- They can be assigned t varaibles, array entries and as properties oof other objects 
+
+
+- Functions are first class objects 
+- All events such as load, network such ajax request/response, user-generated(clicks, keypress), timer events  are single threaded.
+	* These events are queued and executed accordinginly. Therefre all events are executed one after the other.
+- Callbacks are functions taht are set up to be called at later time 
+- If there is no need for a function to be referenced by its name we dont have to give it one. 
+
+Functins and Scopes
+- Unlike other C influenced language, scopes are declared by functions and nt blocks ({...})
+- Variabes declared are availabe to the end of the function in which they are declared regardless of block nesting.. within this function
+- Variables are VISIBLE starting from their point of declaration to the end of the function to which it was defined. That is variables cannot be forward referenced
+- Named functions on the other hand can be forward referenced {This is also called "hoisting"}. That is they are available throughou the scope of their containing function regardless of point of declaration.
+
+Function Invocation
+- JS prvides a safe anding fr argument/parameters inconsistency 
+- "this and arguments are implicit arguments passed to every functin.. "argument" behaves like an array but it is nt an array"
+
+- A function can be invoked as "function", "method", "constructor", "apply/call" 
+- A function can be invoked as a function using the normal invocation notation. Here the context of "this" is the window object (global scope)
+- A function can be invoked as a method when it is a property of an OBJECT. Here the context of this is the defining object. That is object that contains the function 
+- A function can be invoked as constructor using the new keyword. Here the context of "this" is any object that makes use of the functiono 
+	* Invoking a function as a construction defines a naming convention which is (Unlike normal functions it must be NOUNLike and starts with Uppercase letter).
+- Innvoking a function using the aply or call enables us to explicitly set the context of our function..These method exists for EVERY function. 
+	* function.apply(invocation context, [arguments])
+	* function.call(invocation context, arguments) 			COOL!!
+
+- functions are much more ethereal; they're frequently defined as needed, and discarded just as quickly.
+- Never pollute the global namespace. 
+- the "this" keyword is best used to reference the method of an object in case of further refernces by other objects. sEE reasons on page 67 and 68
+- Another solution to referencing asides the use of "this" keyword is to give the anonymous function a name. This can also be called INLINE functions.
+- It is good practice to put a semicolon after any statement. One good use is when compressing or minimifing..
+- Since functions behave as first class object, they can also be assigned properties after declaration. See page 72
+- Function memoizing is the act of caching the result of a function's computation for future reuse or easy access to avoid the need for recomputing. So.. Cool!!!
+	* This is so cool for caching function computation vaues for future re-use..
+- Functios also have an implict "length" property used to deterine the numbers of named PARAMETERS the function was declared with.  Cool!!! 
+- AN objectt type could be determined using "typeof" but for cross-browser weird behaviour using "typeeof we can determine an object typ using 
+		* Object.prototype.toString.call(obj); 
+
+CLosing in on CLosures 
+CLosures allow a function to access all thet variables and functions that are present when the closure is declared even when the defining function is long gone. THat is, they prevent all the variables and functions to be garbage collected as long as the function still exists.. 
+
+- With closures, the dead could be revived. 
+	CLosures can be used in 
+		- timer's interval function to define context 
+		- Using closures from a callback
+
+- Context can be defined for functions using apply and call. THey can also be forcefully defined for  browser generated context using bind which simiply replaces the generated context by the newly defined context
+	Check This Out: 
+	function bindThisMyOwnContext(myContext, nameOfFunction) {
+		return function (){
+			return myContext[nameOfMethod].apply(myContext, arguments);
+		}
+	}
+	//THe above is actually a trivial case; BUt you can see how it works can't you. 
+
+CUrrying 
+	THis is a technique of paritially pre-filling a function with argument before execution. 
+	THis does this and returns a new funtion with some prefilled arguments and the function can be 		called with other arguments together 		with the prefilled arguments.  
+	Prefilling arguments in a function before it is been executed. THerefore it RETURNS a new function with PREDEFINED arguments which can be 		called later. 
+
+Wrapping 
+	FUnctions can be wrapped to alter the default behaviour of the function without affecting its original context. 
+
+Immediate FUnctions 
+	THese are functions that are discards immediately after execution. (function(){})(); 
+	THis is can be used for 
+	- self contained scopes such that it is superiror to any global scope properties and executes within its own onfines making use of its own 			self contained properties which can not be referenced or eavailable outsite it
+	- can also be used to intelligently shorrten variable names.e 
+	- used for variable preservation in loops when= closures are invovled. See page 117 
+
+
+Objects and Prototypes 
+	Javascript functions can be invoked as a constructor using the new keyword. This creates an instance of the function. Note: that when using 		functions as constructors, it is advsiable to make the function be in Title case 88		
+
+	function TestConstructor(){
+		this.property = "first property"; 
+		this.secondproperty = "secondprperty:; 
+		this.firstMethod = function(){return "I am the first MEthod"}; 
+	
+	INstance Method takes precedence or overrides prototypal methods or properrties. Noted!! 
+	Each constructed object has a prototype property by default This prototype property is an empty object in which several other things can be 		attached to (methods, other properrties e.t.c.). COnstructor prototypes are reconciled before a call to the constructor in any computation. 		THis makes it possible for prototypes to be independent of order of definition and could be defined anywhere. ANy instance of the constructor 		that refernces prototype will always be located before computation.  COol!!! THis makes protopes work fine even when defined after object 		instantiationi .... 
+
+	Object Properties 
+		protoype 
+		constructor 
+		hasOWnProperty is ddefined to check if a property exists as an instance of an object but not as a prototype or inheritance.  
+	
+	Regular Expressions 
+	Forward SLashes (Opening and clsoing lieterals for regex 
+	/test/ = match t followed by e followed by s followeed by t in this expression 
+	/[^abc]/ = match any characte other than abc. 
+	/^abc/ = Match any string BEGINNING with abc. 
+	/[a-d]/ = match any of a, b, c or d 
+	\ = used to escape a character. Use as a prefix.. 
+	/test$/ = used to match test at the END of a string 
+	/^test$/ = means that the ENTIRE string must contain test. match must be equal to 		test. (Begins and ends with test)
+	Repeated Oesccurences 
+	? - matches at least once or not at all (optional) /te?st/ matches test, st
+	+ - matches one or more occurencies /tes+t/ matches testestest, test, testestestestestestest
+	* - matches zero or more occurencies /tes*t/ matches testestest, test, t,
+	{} - specifies the number of occurence to match.  /te{3}st/ matches tetetestt
+	.  - This is a universal match (Matches any character except new line). 
+	Predefined CHaracter Set 
+	\t, \d, \D, \s, \S, \w, \W, \n, \r, \v
+
+	Grouping is done with parenthesis ()
+	Alternation is done with a pipe (|) 
+		NOte: when creating regEx using literals, backslash behaves normally(single escaped)  but when creating regex with a string 			back slash are double escaped. E.g. new RegExp("/*\\s", "i"). The \s representing a single white space has been escape twice because 			of its enclosure within a string. 
+	
+	i	- case insensivitve match 
+	g 	- general match (That is instead of matching the first occurence of a 			match. It does a repetitive check for the same regex in all the 		string. IT is called a global match. In this match the regex is tested 			against all matched instances. But, a local match, that is one 	not 			specifying a "g" after the ending '/" literal matches just a SINGLE 			Instance. NOte!!! 
+	
+	Capturing 
+	If we need to capture the matched result, we can call the match function which 		returns an arrays of all captures. We can also specify 	a capture that is 		the position of elements we want to retrieve from the matching array. usinig 		[position] after the regex literal in a match 	function. So, captures are 		what constitutes the match.. Even when a local match is done such that only the 	first instance of the match was returned, its captures are all the regex 		definitions that constitute the match. 	
+
+	?: (This makes parenthesis behaves literally without acting as a group. And 		therefore not included in captures. 
+
+	The Exec 
+	WHen a global expression is performed "g" it returns not the array of captures but 		the array of all MATCHES. That is the operation is carried out on all the string in 		search for a match. With the exec() we can traverse the captures for each match. As 		in page 163. Cool!!!...
+
+	Referencing Captures..
+	Captures can be referenced and used in the same regular expression using 
+	/{capture index} (E.g. /<(/w+)>(<\/\1)>/ - 
+	THe /1 in the above expression uses the capture from (/w+) for </...>. 
+
+	Passive SubExpression 
+	Sometimes we may want to just make parenthesis behave literally for interpretation 		sake and not their actual behaviour such as grouping or capturing. To do this we 		append (?:{expression}). This makes the () behaves literally just passively. ?:
+
+	Summariy, 
+	Regular Expressions are powerful and they make search, replacement and test very 		easy and straightforward. 
+	A global search (g) matches the entire regex until one or many match(es) are gotten 		that match the entire regEx.  Each of these matches can be broken down into 		captures using the exec() forumulae. Remember Captures are the break-down of the 		entire result matching each group in the match. 
+
+	A non-global match returns the first match if any.. 
+	CHeck out page 167 for a wonderful funcion used in compressing a string. 
+
+	Common Applications of Regular Expression 
+	- Trimming String 
+		Trimming white spaces at the beginning and end of a string see page 170
+	- By default newlines are not matched in regex. But this can be done using \s and 		  \S. THat is match both white space characters and non-white space characters. 
+
+Timers and Threading 
+Timers are nnot a feature of JS but are made available to JS via the web-browsers. Remember JS is single threaded. THat all JS codes are run in a single thread. 
+	setTimeout(fn, delay)
+	clearTimeout 
+	setInterval()
+	clearInterrval().. These are all methods on the window object. Therefore in the 	global context. 
+	
+	{RUn FOR so..so..so seconds}
+	{RUn AT EVERY so..so..so seconds}
+	
+
+	
+
+	
+
+	
+	
+
+	
+	
+
+
+
+
+
+
+
+
+
+***************************************************************************************************************************
+***************************************************************************************************************************
+***************************************************************************************************************************
+Key Issues 
+	FUnctions as first class objects 
+	apply, call, arguments, length 
+	hoisting (forward referencing) 
+	Memoizing (storage using funictions) 
+	CUrrying (PRefilling functions before call or execution) 
+	Wrapping functions 
+	IMmediate functions 
+	Serialization: An act of geting the text source of a function.
+	
+Principles: 
+	- Never ever POLLUTE THE GLOBABL NAMESPACE.... 
+	- IT's better to extend individal functionalities of a native object or an object rather than subcalssing the entire object.. (Page 139)
+	- Just because we can figure out a clever way to do something doesn’t always mean that we should.
+
+
+Some Qucik JS Functions
+- typeof (typeof testCase == "testValue")
+- testcase instanceo testValue 
+- "string".charAt(n)  - makes a string behaves like an array 
+- "string".substr(start, count) - makes a substring from the original string 
+- HTMLElement Coonstructor.. hehehe it could be extended.
+
+Note also that "arguments" though behaves an array, it is not an array because the only array-behaviour it exhibits are (indexing and length property).
+
+Check Out this 
+!! - It converts an expression into its BOOLEAN equivalent
+a = 0;
+b = a++ - This would assign the intial value of a to b BEFORE incrementing Note: 
+
+gs.statcounter.com
+statcounter.com  just like google analytics 
+perfectionkills.com
+jsbin.com
+
+
+
+
+
+***************************************************************************************************************************
+***************************************************************************************************************************
+***************************************************************************************************************************
+				JAVASCRIPT PATTERNS - A Breeze  - Stoyan Stefanov 
+***************************************************************************************************************************
+***************************************************************************************************************************
+***************************************************************************************************************************
+Types of Objects 
+	Native objects  
+		Follow Come Objects such as Date, Array, var ... 
+	Host objects 
+		Browser implemented objects suvh as window, timers and console 
+
+Strict Mode 
+	This enforces a subset of JS. That is it prevents some stuff to be used e.g. with statement, argument.callee 
+	Syntac ("use strict"). - It is backward compatible. That is older versions of JS interpreters simply ignores this. Effective in ES5 
+
+Anti-Patterns 
+	Try as much as you can to minimize globals.. As they get attached to the window object and is made avaialble to all parts of your app. 
+	Avoid implied globals. These are local variables used without declaration. They become globals because they were not declared using var. 
+
+			Yet another reason to avoid globals is portability. If you want your code
+			to run in different environments (hosts), it’s dangerous to use globals
+			because you can accidentally overwrite a host object that doesn’t exist
+			in your original environment (so you thought the name was safe to use)
+			but which does in some of the others.
+
+	- Minimize globals  - Do not pollute the global namespace. 
+	- Declare variables using var
+	- Avoid implied globals through chaining as well. Such as var a = b = c = 0; THese assignments are performed from left to right. THus, making 			c, b and a globals. because variables not declared with the var keyword are known to be in the global namespace. 
+	- Use d single var pattern... such that all variables are declared and possible initialized at the beginning of the function.. cool!! 
+	- pre-cache conditions in a loop for better performance 
+	- use for-in loops to iterate over non-array objects such as object properties. YOu may use hasOwnProperty to filter out properties that
+		are not exclusinve to the object OR that were inherited from a prototype or the global Object. 
+
+	- Do not augment built in prototypes of objects such aas Array(), Object(), Function() except when it is undeniably necessary. 
+		And if undeniably necessary you can checkup to see if there is no exact prototype already in existence 
+		if (typeof Array.protoype.myMethod !== "function") {
+			Array.protoype.myMethod = function () {
+				// implementation...
+			};
+		}
+
+	- Avoid fall throughs in switch statement (cases without a break statement) except when undeniably necessary. 
+	- eval() is evil. A popular mantra. Eval() takes an arbitrary string and executes as JS code.
+		And if you must undeniably use eval(), use it in an immediate function. Or use the Function() constructor instead. Though the latter 			is not without its caveats. 
+	- private members are denoted by a single or double underscore as a prefix..
+	- Folllow good conventions 			
+	- Objects are best created like: 
+		THis ensures even if the new constructor was used in calling the object or not. It behaves normally see page 63. 
+		function Waffle() {
+			var that = {};
+			that.tastes = "yummy";
+			return that;
+		}
+				OR
+		function Waffle() {
+			return {
+				tastes: "yummy"
+			};
+		}
+
+	 - CHeckk if an object is an array 
+		if (typeof Array.isArray === "undefined") {
+			Array.isArray = function (arg) {
+			return Object.prototype.toString.call(arg) === "[object Array]";
+				};
+		}
+
+	- Array.isArray(arrayCheck) 		ECS5 
+	- JSON.parse(json) 			ECS5 
+	- The opposite of JSON.parse() method is JSON.stringify(). It takes any object or array
+		(or a primitive) and serializes it into a JSON string.
+	- Wrapper Objects. These can be used to convert primitve values to their corresponding Object. With this, it is possible to augment theese 				values e.t.c. 
+	- Error Objects 
+		try {
+			// something bad happened, throw an error
+			throw {
+				name: "MyErrorType", // custom error type
+				message: "oops",
+				extra: "This was rather embarrassing",
+				remedy: genericErrorHandler // who should handle it
+			};
+		} catch (e) {
+				// inform the user. Where e repreesents the thrown object. Cool!!
+				alert(e.message); // "oops"
+			}
+
+	- In general, with the exception of the Date() constructor, there’s rarely a need to use the
+		other built-in constructors. The following table summarizes these constructors and
+		their corresponding and preferred literal patterns.
+
+	- We have function declaration and function expression. For function expressions, we have name function expressions and unnamed function 			expressions also called anonymouse functions. Function expressions can be ssigned to a variable. 
+	- Prefer function expressions over declarations.. 
+	- while functional declarations can be forward referenced, function expressions cannot be forward referenced.. 
+	- There is "lazy function definition" in which a function is made to do some few things and later overwritten using it's name to override 			this funciton with lesser work or nothing to else to do. 
+		Example of lazy function definition 
+			var scareMe = function () {
+				alert("Boo!");
+				scareMe = function () { //implied global OR declaration wiithut a var keyword. 
+				alert("Double boo!");
+				};
+			};
+				// using the self-defining function
+				scareMe(); // Boo!
+				scareMe(); // Double boo!
+
+	- IMeediate functions.. Self-executing or self invoking functions
+		(function (global) {
+		// access the global object via `global`
+			}(this)); //THe global object is passed to this immediate function using "this". 
+		Note that in general you shouldn’t pass too many parameters to an immediate function,
+
+	- Immediate object initialization 
+			({
+				// here you can define setting values
+				// a.k.a. configuration constants
+				maxwidth: 600,
+				maxheight: 400,
+					// you can also define utility methods
+				gimmeMax: function () {
+					return this.maxwidth + "x" + this.maxheight;
+				},
+				// initialize
+				init: function () {
+					console.log(this.gimmeMax());
+					// more init tasks...
+				}
+			}).init();
+	- CHeck up load-time or init-time branching as explained by stefanox.. See page 94. 
+	- He talked about memoizing as well. 
+	- Configuration objects.. THese are objects that are passed in as paramters intead of passing several tens of parameters.. 
+	- FUnction currying.. also called schönfinkelisation the two were nmed after two popular mathematicians. Also known as partial functions or 			partial functional applications
+		Currying demystified.. 
+			function add(x, y) {
+				if (typeof y === "undefined") { // partial
+					return function (y) {
+						return x + y;
+					};
+				}
+				// full application
+				return x + y;
+			}.. COOL!! 
+	- NOte: Memoizing and currying are both performance patterns. Currying makes a lot of sense you know... 
+	
+
+	- Namespacing helps avoid naming collisions and reduce unncessary prefixes.. (Page 90) - A pattern is built around this. 
+	- Declaring Dependencies makes code faster.. A pattern is built arround this. 
+	- Private members declaration 
+	- Privlege Members / Method (Public members that have access to private members are called privileged members/method) 
+	- Because arrays and objects are passed by reference when they are returned as private, the client can modify them because of their passed by 			reference teendencies. ONe solution is to only reeturn the properties you think a client would want to work on rather than returrning 			the entire private object or array. OR Make a copy of the object or array and return the copy instead of the original. IN order to 			prevent the client or caller from modifying the private member. 
+	- One can add common properties and methods to the prototype property of the constructor. Some of these properties contained in the prototype 		  	can also be made private and providing a corresponding accessor or setter for it. This is achievable using the private members inside 			constructor and private members inside object literals. Remember private members inside object literals works with immediate 				functions. 
+
+		Example 
+		function Car($details) { 
+			this.name = $details.name; 
+			this.type = $details.type; 
+			var plateNumber = $details.plateNumber; //private members inside constructor 
+			this.getPlateNumber = function (){
+				return plateNumber; 
+			} 
+		}
+
+		Car.prototype.maker = (function(){
+			var maker = "God Blessing International";  //private members inside object literals. 
+			return {
+				getMaker: function () {
+				return maker;
+				}
+			};
+		})();
+		
+	THE ALMIGHTY MODULE PATTERN 
+		- THis pattern is a combination of namespaces, dependency declaration, private and privilege members and immediate functions. 
+		
+	THE SANDBOX PATTERN 
+		- This helps to do some fixes on the namespace pattern to avoiid long names in namepsaces. 
+
+	Static / Non-Static Members 
+	Example 
+		var Gadget = function(){}
+		Gadget.aStaticMethod = function(){} //Can be called without a constructor 
+		Gadget.prototype.aNonStaticMethod = function(something){ this.something = something} //can be called via constructor
+		
+	
+	Object Constants 
+		Constants is mostly indicated using All Caps. Check Page 109 - 110 for more details. COOL
+		var constant = (function () {
+			var constants = {},
+			ownProp = Object.prototype.hasOwnProperty,
+			allowed = {
+				string: 1,
+				number: 1,
+				boolean: 1
+			},
+			prefix = (Math.random() + "_").slice(2);
+			return {
+				set: function (name, value) {
+					if (this.isDefined(name)) {
+					return false;
+				}
+				if (!ownProp.call(allowed, typeof value)) {
+					return false;
+				}
+				constants[prefix + name] = value;
+					return true;
+				},
+				isDefined: function (name) {
+					return ownProp.call(constants, prefix + name);
+				},
+				get: function (name) {
+					if (this.isDefined(name)) {
+						return constants[prefix + name];
+					}
+					return null;
+				}
+			};
+		}()); So.. COOL
+
+	Chaining Pattern 
+		This works the same way, Java, PHP works for method chaining by doing some stuff and returning this. 
+
+Chapter Six 	
+Code Re-use Pattern 
+	Class-Like Inheritance 
+	Prototypal Inhertiance - MOdern (Uses Object.create()) built in JS funcction
+		Prototypal inheritance is now supported in ECMA5 using the function Object.create(parent, child's own property) 
+	Ineritance by shallow/deep copying objects' properties. This does not inolve protypes. 
+	Mix-ins - used to extend several objects. 
+	Borrowning Method Pattern - Using call and apply. Borrows a method from the defining object,  use the new objet as parameter and some other 		arguments. Call accepts comma separated arguments, apply accepts array..
+	Remember, unlike call and apoply, bind though makes use of apply internally, RETURNS A FUNCTION and make it serve as a closure. This helps to 		eliminate the problem of this pointing to the global object in some cases.  See Page 158. 
+
+	
+	
+	
+
+
+
+
+
+
+	
+POLA  (Principle of Least Authority) - Never give more than needed. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+***************************************************************************************************************************
+***************************************************************************************************************************
+***************************************************************************************************************************
+				ADDITIONALS 			ADDITIONALS 
+***************************************************************************************************************************
+***************************************************************************************************************************
+***************************************************************************************************************************
+Closures 			- Site Point 
+	Closures contain a function and a reference to the environment in which the function was created.
+	A closure is formed when an outer function exposes an inner function.
+	Closures can be used to easily pass parameters to callback functions.
+	Private data can be emulated by using closures.  This is common in object-oriented programming and namespace design.
+	Closures should be not overused in constructors.  Adding to the prototype is a better idea
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

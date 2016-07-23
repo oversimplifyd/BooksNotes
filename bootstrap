@@ -1,0 +1,91 @@
+Bootstrap Classes 
+	
+	.container - Compulstory does some cool stuff 
+	.row - stack stuff horizontally 
+	.column - may only be a subchild of row 
+	
+	Paragraphs/ Text	
+	.lead - used in paragraphs to create some lighter emphasis. 
+	.text-right, .text-left, .text-muted, .text-success, failure, primary, info, 		warning, danger. 
+
+	list
+	.list-inline, list-unstyled, dl-horizontal (for <dl> definition lists. 
+
+		
+	Table 
+	<table table table-hover, table-condensed, table-bordered, table-striped>
+	<tr success, danger, warning
+
+	Form 
+	- Add .role to the parent form element. 
+	- wrap all labels and controls in a div with a .form-group 
+	- add .form-control to <input> <textarea> <select>
+	- .form-inline, .form-horizontal (<label .control-label>
+	- .input-sm, .input-lg (sizing input boxes)
+
+	Navigation 
+	Base Class .nav 
+		nav-tabs 
+	I love page 84. 
+
+	Navbars. 
+	Add classes .navbar, .navbar-default to the <nav> tag.
+	Add role="navigation" to the above element, to help with accessibility.
+	Add a header class .navbar-header to the <div> element. Include an <a> element with 		classnavbar-brand.
+	This will give the text a slightly larger size.
+	To add links to the navbar, simply add an unordered list with a classes         	of .nav, .navbar-nav.
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+make sure that it is rendered
+across various devices (mobiles,desktops,tablets...) properly.
+initial-scale=1.0 ensures that when loaded, your web page will be rendered at a 1:1 scale, and no zooming will
+be applied out of the box.
+Add user-scalable=no to the content attribute to disable zooming capabilities on mobile devices as shown below.
+Users are only able to scroll and not zoom with this change, and results in your site feeling a bit more like a native
+application.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+

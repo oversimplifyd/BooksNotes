@@ -139,10 +139,10 @@ The scope object is not the model but it references a model.
 	- Batarang is a chrome extension that reveals information about the avaialble scopes of of an app. 
 	- All scoped objects are scoped 
 	- Scope objects bind the view and model together.
-	 Scope objects are almost always linked to a view element.
-	 There can be more than one scope object defined for an application. In fact,
+	� Scope objects are almost always linked to a view element.
+	� There can be more than one scope object defined for an application. In fact,
 		in any decent size app there are a number of scopes active during any given time.
-	 More often than not, child scopes inherit from their parent scope and can access parent scope data.
+	� More often than not, child scopes inherit from their parent scope and can access parent scope data.
 	
 	* The ng-controller creates a new scope. A new scope can also be created with some other specific directives..
 
@@ -361,93 +361,4 @@ PROVIDERS
 ************************************************************************************************************************
 Angular - Brad Green 
 	
-	Controller's Responsiblities.
-	Set up the initial state in your application’s model
-	Expose model and functions to the view (UI template) through $
-	Watch other parts of the model for changes and take action. 
-
-	ng-model creates a bi-directional data binding.
-
-	Services are SINGLETONs (single-instance) objects that carry out the tasks necessary to support your application’s functionality. 
-	Some in-built angular services include, $location, $route, $http. 
-	Servoces are good mechanism to use when you need to communicate across controllers and share state. Angular’s bundled services start with a 		$, so while you can name them anything you like, its a good idea to avoid starting them with $ to avoid naming colli‐ sions.
-	- Services can be registered uusing (.provider, .factory, .service) see page 48. 	
-	
-	Filters - Asides the angular bundeld filters, I can write custom filters. See page 50. (.filter) 
-	Directives - You can write custom directivess. use (.directive) 
-	Checkout Angular Routing on page 40. 
-
-	
-	Organizing Angular App
-	App
-	- scripts
-		- app.js //Defines the angular app and all asociated js files. 
-		- main.js ''THis is where requirejs dependency definition goes 
-		- bootstrap.js //Tells angular requireJs has finished loading dependencies and the dom is ready, so iit is ready to go. 
-		- controller.js
-		- directives, services and custom-filters
-		- Vendor
-			- Other third party dependencies 
-	- view 
-		- all partial templates 
-	- index.html 
-	- Styles 
-	- Images 
-	test
-	- Unit test 
-	- integration test
-	Config files 
-
-	NOte: Yeoman is used to actualize these file structure and canalso be used as the web seerver for live web serving. 
-		require.js is used for dependency management. It helps to load all depednecies before loading codes. See page 68. 
-		karma is used for testing.. 
-	
-	I bet you know package management (Just like composer for php) is different from dependency management. 
-	YEOMAN, KARMA, NODE, NPM, Batarang, Chrome, RequirJS
-	
-	CHAPTER FOUR
-		- The model is the truth.
-		MOdel - Application Data 
-		VIew - Application's templates 
-		COntrollers - Business Logic and etcetera 
-		Directives / Services - DOM Manipulation, Server Setup etcetera 
-
-		Proimses in AnglarJS is implemted using a dependency injection callled '$q', the proomise is instantiated using '$q.defer()', the 			success handler is called using $q.defer().resolve(), error is handled using $q.defer().delay(). Remember promise .then() accepts two 			functions, one is what to do on success and the other is what to do on error. THe latter is optional. See Page 92. 
-
-		For each route, we specify the URL, the controller that backs it up, the template to load, and finally (optionally), a resolve object.
-		
-		This RESOLVE object tells AngularJS that each of these resolve keys needs to be satisfied before the route can be displayed to the 			user. For us, we want to load all the recipes, or an individual recipe, and make sure we have the server response before we display 			the page. So we tell the route provider that we have recipes (or a recipe), and then tell it how to fetch it.
-		
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	Latest Yeoman 
-		npm install -g yo 
-		npm install angular generators 
-		yo angular 
-		installed globally grunt(task runner) and bower(dependency manager) 
-		grunt install and bower install was done on the project directory also to locally have acopy of needed components 
-		grunt serve.. COOL!! 
-		I also had to instlall rubygems, whcih i thereafter used to install compass. THis is needed as yeoman depends on compass. 
-		yo angular:route routeName
-		
-		Yeoman scalfolds(Getting the angular framework and some other libraries), Grunt used for build processes(Serving and Building)  and 			bower for dependency management (Minifies code for deployment and manages dependncies).  
+	Set up the initial state in your application

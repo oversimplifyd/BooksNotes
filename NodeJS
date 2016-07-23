@@ -1,0 +1,21 @@
+Quick Fixes.. 
+Make node look for globally knstally modules from a path by setting this exportPATH 
+NODE_PATH = "Where the node_modules is" 
+
+
+Does my IDE has support Syntax Color 
+DOes it support find and replace with Regex 
+Does it have VIdual Diff tool that compares word-for-word and not just line-for-line?
+-----------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------
+
+Learning.... 
+=====================================================================================================
+TThe Basics (Chapter One) 
+
+The require() function makes a Node.js module available for use. Node.js modules are what you might expect: a collection of data and functions that are bundled together, usually providing functionality in some particular area. In this case, the http Node.js module provides simple HTTP server functionality.
+
+A package is a module that can be added to the node executable later and is not built into the node executable by default. The difference between a module and a package is not very important; it is really just a change of terminology. 
+
+

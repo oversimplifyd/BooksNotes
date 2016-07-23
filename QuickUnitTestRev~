@@ -1,0 +1,59 @@
+Quick Unit Testing Review
+
+Quick Thoughts about Unit Testing..
+*******************************************
+
+TDD is a robust way of designing software components (“units”) interactively
+so that their behaviour is specified through unit tests.
+
+TDD helps you to deliver software components that individually behave according
+to your design. A suite of good unit tests is immensely valuable: it documents your design,
+and makes it easier to refactor and expand your code while retaining a clear overview of each component’s behaviour.
+
+Tips:
+    1.  Don't make unncessary assertions.
+        Which specific behaviour are you testing? It’s counterproductive to Assert() anything that’s also asserted
+        by another test: it just increases the frequency of pointless failures without improving unit test coverage
+        one bit. This also applies to unnecessary Verify() calls – if it isn’t the core behaviour under test, then
+        stop making observations about it!
+        -   Have only one logical assertion per test.
+        -   Remember, unit tests are a design specification of how a certain behaviour should work,
+            not a list of observations of everything the code happens to do.
+
+    2.  Test only one code unit at a time
+        Your architecture must support testing units (i.e., classes or very small groups of classes) INDEPENDENTLY,
+        not all CHAINED together. Otherwise, you have lots of overlap between tests, so changes to one unit can
+        cascade outwards and cause failures everywhere.
+
+   3.   Mock out all external services and state
+
+   4.   Don’t unit-test configuration settings
+
+   5.   Name your unit tests clearly and consistently  (Maintenance is hard if you don't know what you are trying to
+        maintain.
+
+
+  UNIT TESTING WITH PHP
+  So the cure to boredom is simple task switching and timely test writing... Test as you Code, don't code and test
+  to avoid having to write tests, tests and tests which cold lead to boredom
+
+	TUTS+ On Unit Testing 
+	TYpes of Testing: 
+	Black box testing 	-	 Testing the state of an object 
+	White Box testing 	-	Testing the behaviour of an object (MOcking) 
+
+	Mocking is a style of testing that allows to test behaviour. It has set of object representing the different level of faking object behaviour 
+	These tools include (dummy object, test stubs, test spies, test fakes, test mocks) 
+	
+	A test Stub is an OBJECT to CONTROL the INDIRECT INPUT of a tested code.
+	The most common example of a test stub is when an object asks another object for information and then does something with that data.
+	A stub class is needed for dependency injection. THis is to remove the need for instantiating another object in a test class. What is best 		done is to use the class stub via DI
+	
+	A dummy object is an object that the System Under Test (SUT) depends on but they are actually never used. THese objects could be an argument 		passed to another object, an object send to another object to be sent to a third object e.t.c. 
+
+	A test mock is an object that is capable of controlling both indirect input and output. Uniike test stub, it controls oth indirect input and 		output. 
+
+	Test Spy is similar to test MOck but unlike test mock they don't have built in assertions and expectations. 9Remember that a test mock which 		controls indirect output and input have built in assertion and expectation. 
+
+	
+	

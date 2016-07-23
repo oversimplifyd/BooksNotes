@@ -1,0 +1,49 @@
+*	An ALGORITHM is any well-defined computational procedure that takes some value, or set of values, as input and produces some value, or set of 		values, as output.
+
+*	an INSTANCE of a problem consists of the input (satisfying whatever constraints are imposed in the problem statement) needed to compute a 		solution to the problem.
+
+*	An algorithm is said to be CORREXT if, for every input instance, it halts with the correct output. We say that a correct algorithm solves the 		given computational problem. An incorrect algorithm might not halt at all on some input instances, or it might halt with an answer other
+	than the desired one.
+
+*	Total system performance depends on choosing efficient algorithms as much as on choosing fast hardware. It is at larger problem sizes that 		the differences in efficiencies between algorithms become particularly prominent.
+
+*	We use loop invariants to help us understand why an algorithm is true. Three things must be shown about a loop invariant 
+	1.	Initialization - It is true prior to the first loop 
+	2.	Maintenance  - If it is true before a loop it continues to be troop for other other iterations 
+	3.	Terminator  - After termination must give us a useful property that tells if the algorithm is correct or not. 
+
+*	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Exercises 
+	Measures of efficiency of an algorithm include speed, space (memory), easyness and correctness.  

@@ -1,0 +1,462 @@
+Effective Java 		Joshua Bloch 
+
+Chapter Two (Creating and Destroying Objects) 
+***********************************************
+	*	Consider static factory methods before providing a public constructor for 			your object. 
+		Static factory methods can help to
+		1. 	Reduce the need for new object creation at every call to a 				particular class. It can be used to getInstance just like 				singleton. THat is gets the existing instance of the object, or 			create a newInstance for the same object. 
+
+		2.	They make it possible to return objects without making their class 				public. ALthough this means that returned objects/classes cannot be 				subclassed since only public and protected classes can be 				subclassed. 
+
+		3.	Unlike constructors, they are not REQUIRED to create a new object 				each time they are invoked. Also known as Instance-controlled 				classes.
+
+		4.	Also, unlike constructors, static factory methods have names. Since 				a class can provide different types of instances based only on its 				parameterized constructor differences, a static factory method on 				the other hand provides different object of the same class by 				creating named static methods. 
+			
+	**	Consider a builder when faced with many constructor parameters. 
+	
+	***	Enforce Singleton with a private constructor or an enum type..  
+
+	IV	To prevent a class from instantiation or subclassing, simply declares its 			constructor as private.. COOL.
+
+	V	Prefer primitives to boxed-primitives and watch out for unnecessary 			autoboxing. 
+		Example 
+		
+		public void addNumbers(){
+			Long sum = 0L; //Don't DO this 
+			long sum = 0L; //Do this as there wouldn't be a needd to doo a 						conversion from boxed primitive to primmitive and 						save 
+			for(long i = 0; i< Intege.MAX_VALUE; i++) {
+				sum += i;
+			}
+		} //COOL.. 
+
+	VI	Avvoid creating unneccessary Objects.. Page 40. IT saves performance too. 
+		If an object is immutable, endeavour to make it static and have a single 			instane of it rather than having millions of the same objets created at 		every run..  
+		I discovered this..
+		// The below static grouping makes it possible to group some calls as 			static.  
+		static {
+			//Do some calls 			
+		}
+
+	VII	Avoid memory leaks by sometimes doing manual memory management by nulling 			out objects that are no longer needed but still retained by the program and 			nnoticed by the GC. COOL...
+
+	VIII	Never do anything time-criical in a finalizer 
+		Never depend on a finalizer to update a critical persistent state. 
+		As most times finalizers are giving low execution priorities and may most 			times not execute and this means resources planned to be reclaimed or stuff 			planned in a finalizer may never get executed. 
+		
+		Avoid finallizers... prefer doing things that needed to be done sing a 			try..finally clause 
+
+	CHAPTER THREE 
+	
+	IX	Methods Common to all objects. 
+		Equals 
+			Override this Object equal method only When a class has a
+			notion of logical equality that differs from mere object identity, 				and a superclass has not already overridden equals to implement the 				desired behavior. pg 50-64
+			Remember Reflexivity, Symmetry and consistency when overridden 				equals.
+
+		HashCode
+			You must overrid hashcode in every class that overrides equals. 
+			Equal objects MUST have equal hashcode. This helps to avoid error 				when using these classes in a collection. As muost collections use 				an hash table and uses a containing class hashCode to identify the 				class from an hash bucket. Therefore, different instances of the 				same object must have the same hashcode. 
+			See page 67 for hashCode implementation. Cool!!!
+			In my tems, I think it's best to generate hasCode base on an object 				equality conditions. 
+
+		TOString 
+			Providing a good toString implementation makes your class much more 				pleasant to use. 
+			All subclasses shoold override the toString method to provide 				concise and informative representation of the object that is easuy 				to read. 
+			The toString method should return all of the interesting
+			information contained in the object. It must be self explanatory 				especially for the value class. 
+
+			Whether or not you decide to specify the format, you should clearly 				document your intentions to save the programmers from future 				hassle.
+		
+		Cloning 
+			NEVER make the client do anything the library can do for the client.
+			
+
+	CHapter Four 
+	X	Minimize accessibilty of classes and members 
+			A well-designed module hides all of its implementation details, 			cleanly separating its API from its implementation.
+
+			Make each class or member as inaccessible as possible
+
+			It is wrong for a class to have a public static final array field, 				or an accessor that returns such a field. (This is a frequent 				source of security holes. because a final reference is attached to 				an always mutable array object..)  
+
+			if a class is accessible outside its package, provide accessor
+			methods,
+
+			public classes should never expose mutable fields. It is less
+			harmful, though still questionable, for public classes to expose 				immutable fields. It is, however, sometimes desirable for 				package-private or private nested classes to expose fields, whether 				mutable or immutable.. COOL!!!
+		
+		Accessibility Levels: 
+		Private—The member is accessible only from the top-level class where it is
+		declared.
+
+		Package-private—The member is accessible from any class in the package
+		where it is declared. Technically known as default access, this is the 			access level you get if no access modifier is specified.
+
+		Protected—The member is accessible from subclasses of the class where it is 			declared (subject to a few restrictions [JLS, 6.6.2]) and from any class in 			the package where it is declared.
+
+		Public—The member is accessible from anywhere.
+
+	XI	Minimize Mutability 
+			To guarantee immutability, a class must not permit itself to be 			subclassed.
+			Don't provide any method that change the state of the object 
+			Make all fields private
+			Make all fields final. 
+			Check Page 96 for advantages of class immutability... 
+
+			Preventing a class from being subclassed without the final 				keyword.	 
+
+			Classes should be immutable unless there’s a very good reason to 				make them mutable.
+			Make every field final unless there is a compelling reason to make 				it nonfinal
+			
+		NB: Another way to make a class not extendable without using final is to 			use static factory method. That is its construurctor will be made private 			and a public static method is used to accept arguments and return a new 		object at every instance. A class without a public or protected constructor 			cannot be subclassed. 
+
+	XII	Favour Composition over Inheritance 
+			Inheritance is appropriate only in circumstances where the subclass 				really is a subtype of the superclass. In other words, a class B 				should extend a class A only if an “is-a” relationship exists 				between the two classes. If you are tempted to have a class B 				extend a class A, ask yourself the question: Is every B really an 				A? If you cannot truthfully answer yes to this question, B should 				not extend A. If the answer is no, it is often the case that B 				should contain a private instance of A and expose a smaller and 			simpler API: A is not an essential part of B, merely a detail of 				its implementation.
+
+			Inheritance Can cause fragility if the superclassis not in the same 				package with the subclass. 
+
+		Design and Document for Inheritance or else prohibit it. 
+			The best solution to this problem is to prohibit subclassing in 			classes that are not designed and documented to be safely 				subclassed. 
+
+			There are two ways to prohibit subclassing. The easier of the two 				is to declare the class final. The alternative is to make all the 				constructors private or package-private and to add public static 				factories in place of the constructors.
+
+		Prefer Interfaces over abstract classes 
+			Interfaces are ideal for defining mixins. That is makes it easy to 				augment a class' functionality. 
+
+			Interfaces allow the construction of nonhierarchical type 				frameworks.
+
+			NB: An interface unlike regular classes permits extending more than 				one interfaces. COOL!
+
+			NB: Abstract Classes are easier to evolve than interfaces. That is, 				concrete methods and their implementation can be added at a later 				release without affecting subclasses. This is unlike interfaces 			where any updated method on the interface will cause other 				implementor to break. 
+		
+			NB: Simulating multiple inheritance entails mixing the power of 			abstract classes real implementation and the power of intefaces 			multiple inheritance to give a skeletal implementation. That is the 				subject class will end up extending the abstract class which 				implemented several interfaces and implementing some of the 				interfaces' definitions or leaving it for the subject class. 
+
+			Interfaces should be used only to define types. They should not
+			be used to export constants.
+											
+
+		Prefer Class hierarchies to Tagged Fiedls. (See Page 122)  COOL 
+		
+		Use function objects to represent strategy. (See page 100) 
+			A primary use of function pointers is to implement the Strategy
+			pattern. To implement this pattern in Java, declare an interface to 				represent the strategy, and a class that implements this interface 				for each concrete strategy. When a concrete strategy is used only 				once, it is typically declared and instanti- ated as an anonymous 				class. When a concrete strategy is designed for repeated use, it is 				generally implemented as a private static member class and exported 				in a public static final field whose type is the strategy interface.
+
+		
+		Favour static member classes over nonstatic 
+			A nested class should exist only to serve its enclosing class. If a 				nested class would be useful in some other context, then it should 				be a top-level class. 
+
+			Types of Nested Classes 
+				Static Member Class 
+				Nonstatic member class 
+				Local class - GOes where a local variable can go. 
+				Anonymouse inner class - Goes anywhere an expression can go.
+
+			If an instance of a nested class can exist in isolation from an 			instance of its enclosing class, then the nested class must be a 				static member class: it is impossible to create an instance of a 				nonstatic member class without an enclosing instance.
+
+			
+	Chapter Five 
+	GENERICS 
+	Don't use raw types. Use generics instead. 
+		Set<Object> is a parameterized type representing a set that can contain 		objects of any type, Set<?> is a wildcard type representing a set that can 			contain only objects of some unknown type, and Set is a raw type. 		
+		Every time you use an @SuppressWarnings("unchecked") annotation, add a 			comment saying why it’s safe to do so. 
+
+		Unchecked warnings are important. Don’t ignore them. Every unchecked 			warning represents the potential for a ClassCastException at run- time. Do 			your best to eliminate these warnings. If you can’t eliminate an unchecked 			warning and you can prove that the code that provoked it is typesafe, 			suppress the warning with an @SuppressWarnings("unchecked") annotation in
+		the narrowest possible scope.
+
+	Prefer Lists to Arrays 
+		1. Array is covariatn and list invariant. That is, a array of a subtype is 			same as array of it super. sub[] == sup[]. List is invariant, that is no 			matter inheritance each list behaves differently. See page 115
+
+		2. Arrays are reified while lists are erased. That is, type-check is done 			at runtime for arrays but at compile time for lists/generics. Thus, at run 			time type iis erased for generics since it has be done at compile time. 
+		
+		In summary, generic methods, like generic types, are safer and easier to use
+		than methods that require their clients to cast input parameters and return 			values.	Like types, you should make sure that your new methods can be used 			without casts, 	which will often mean making them generic. And like types, 			you should generify your existing methods to make life easier for new users 			without breaking existing clients
+
+	Bounded Wildcard Tpe <? extends E>, <? super A> ...
+
+	Chapter Six 
+	ENUMS	
+	An enumerated type is a type whose legal values consist of a fixed set of con-
+	stants, such as the seasons of the year, the planets in the solar system, or the 		suits in a deck of playing cards. 
+
+	SHORTCOMINGS of int and string Enum types 
+	There is no easy way to translate int enum constants into printable strings. If
+	you print such a constant or display it from a debugger, all you see is a number,
+	which isn’t very helpful. There is no reliable way to iterate over all the int enum
+	constants in a group, or even to obtain the size of an int enum group.
+
+	Java’s enum types are full-fledged classes. 
+	they are classes that exportone instance for each enumeration constant via a public 		static final field. Enum types are effectively final, by virtue of having no 		accessible constructors. Enum types are instance controlled. 
+
+	Enum types let you add arbitrary methods and fields and implement arbitrary 		interfaces. They provide high-quality implementations of all the Object methods 	they implement Comparable and Serializable, and their serialized form is designed 		to withstand most changes to the enum type. Constants with super-powers..LMAO.
+
+	If an enum is generally useful, it should be a top-level class; if its use is tied 		to a specific top-level class. 
+
+	Enums are safer and more powerful than int constants. 
+
+	Use enums when you need to represent a fixed set of constants such as 
+		- days of the week, month, planet, countries e.t.c. 
+		- The values of these constants can be determined t coompile time, choices 			on a menu, command line flags e.t.c. 
+
+	Enums are, generally speaking, comparable in performance to int constants. A minor 		performance disadvantage of enums over int constants is that there is a space and 		time cost to load and initialize enum types. Except on resource-con- strained 		devices, such as cell phones and toasters, this is unlikely to be noticeable
+	in practice.
+
+	All enums have an ordinal method, which returns the numerical position of each enum 		constant in its type.
+
+	Never derive a value associated with an enum from its ordinal; store it in an 		instance field instead; 
+ 
+	An opcode is an enumerated type whose elements represent operations on some machine
+
+	while you cannot write an extensible enum type, you can emulate it by writing an 	interface to go with a basic enum type that imple- ments the interface. This allows 		clients to write their own enums that implement the interface. These enums can then 		be used wherever the basic enum type can beused, assuming APIs are written in terms 		of the interface. Cool Enums are not extensible but can impleement interfaces and 		thus extensibility could be provided from there. 
+
+	
+	Named Patterns versus Annotations 
+	Prefer annotations over named patterns. 
+		java.lang.annotation.*;
+		@Retention(RetentionPolicy.RUNTIME)
+		@Target(ElementType.METHOD)
+		public @interface Test {}
+	
+	Retention and @Target are called meta-annotation. @Retention indicates that the Test 		annotation should be retained at run time, the @Target annotation indicates that it 		should only be applied on method declaration but not class or field declaration. 
+
+	More generally, annotations never change the semantics of the annotated code, but
+	enable it for special treatment. The above annotation is parameterless that is the 		annotation does not take a parameter on declaration and initialization. 
+
+		java.lang.annotation.*;
+		@Retention(RetentionPolicy.RUNTIME)
+		@Target(ElementType.METHOD)
+		public @interface ExceptionTest {
+			Class <? extends Exception> value();
+		}
+	The annotation requires a parameter and the parameter should be any type that xtends 		the Exception CLass. This also indicates that any method that receiives this 		annotation should throw an exception specified by the annotation. 
+	Example: 
+		public class Sample2 {
+		@ExceptionTest(ArithmeticException.class)
+		public static void m1() { // Test should pass because truly this method
+			int i = 0;	 //throws an ArithmeticException as 0 cannot divide
+			i = i / i;	//0. 
+		}
+
+		@ExceptionTest(ArithmeticException.class)
+		public static void m2() { // Should fail (wrong exception)
+			int[] a = new int[0]; //It didn't throw the exception specified by
+			int i = a[1];		//the annotation. 
+		} Cool! Page 191. 
+		
+	That said, with the exception of toolsmiths, most programmers will have no need to 		define annotation types. All programmers should, however, use the pre- defined 		annotation types provided by the Java platform. 
+
+	Consistently use the override annotation. 
+	This annotation can be used only on method declarations, and it indicates that the 		annotated method declaration overrides a declaration in a supertype. If you 		consistently use this annotation, it will protect you from a large class of 		nefarious bugs.
+	
+	the compiler can protect you from a great many errors if you use the Override 		annotation on every method declaration that you believe to override a supertype 	declaration, with one exception. In concrete classes, you need not annotate methods 		that you believe to override abstract method declarations (though it is not harmful 		to do so).
+
+	Use marker interfaces to define types
+	A marker interface is an interface that contains no method declarations, but merely 		designates (or “marks”) a class that implements the interface as having some 		property.
+
+CHAPTER SEVEN (METHODS) 
+	Check Parameters for Validity 
+	If the method is a public method, you can include  the @throws tag in the javadoc, 		so that the user will be aware the method would throw an exception if something 	unepected is passed as a parameter to this method. 
+
+	Assertions can also be used for this purpose if the method is not public and is used 		by you. (Page 202)
+
+	Also, assertions are claims that the asserted condition will be true, regardless of 		how the enclosing package is used by its clients. Unlike normal validity checks, 		assertions throw AssertionError if they fail. And unlike normal validity checks, 		they have no effect and essentially no cost unless you enable them, which you do by 		passing the -ea (or -enableassertions) flag to the java interpreter. 
+
+	It is critical to check the validity of constructor parameters to prevent the 		construction of an object that violates its class invariants. An important exception 		to this rule of validating parameters is the case in which the validity check would 		be expensive or impractical and the validity check is per- formed implicitly in the 		process of doing the computation. However, indiscriminate reliance on 			implicitvalidity checks can result in a loss of failure atomicity
+
+	Each time you write a method or constructor, you should think about what 		restrictions exist on its parameters. You should document these restric- tions and 		enforce them with explicit checks at the beginning of the method body. It is 		important to get into the habit of doing this.
+
+	You must program defensively, with the assumption that clients of your class will do 		their best to destroy its invariants.
+
+	Make defensive copies of parameters where necessary to protect against a class' 	invariance (unchanging attribute). defensive copies are made before checking the
+	validity of the parameters (Item 38), and the validity check is performed on
+	the copies rather than on the originals. While this may seem unnatural, it is nec-
+	essary. It protects the class against changes to the parameters from another thread
+	during the “window of vulnerability” between the time the parameters are checked
+	and the time they are copied. (In the computer security community, this is known
+	as a time-of-check/time-of-use or TOCTOU attack. 
+
+	Remember that nonzero-length arrays are always mutable. Therefore, you should always 		make a defensive copy of an internal array before returning it to a client.
+
+	where possible, use= immutable objects as components of your objects, so that you 		that don’t have to worry about defensive copying. 
+
+	if a class has mutable components that it gets from or returns to its clients, the 		class must defensively copy these components. If the cost of the copy would be 		prohibitive and the class trusts its clients not to modify the compo- nents 		inappropriately, then the defensive copy may be replaced by documentation outlining 		the client’s responsibility not to modify the affected components.
+
+	
+	******	
+	Design Methods Signatures Carefully
+	Choose Names Carefully 
+	Your primary goal should be to choose names that are understandable and consistent 		with other names in the same package. Your secondary goal should be to choose names 		consistent with the broader consensus. 
+
+	Every method should “pull its weight.” Too many methods make a class difficult to 		learn, use, document, test, and maintain. This is doubly true for interfaces, where 		too many methods complicate life for implementors as well as users.
+
+	Avoid long parameter lists. Aim for four parameters or fewer.
+	
+	Long sequences of identically typed parameters are especially harmful. 
+	Methods for shortening long parameter list:- 	
+	-  	There are three techniques for shortening overly long parameter lists. One is
+		to break the method up into multiple methods, each of which requires only a 			sub-set of the parameters. Let you methods have HIGH power-to-weight ratio.
+	-	A second technique for shortening long parameter lists is to create helper
+		classes to hold groups of parameters. 
+	-	A third technique that combines aspects of the first two is to adapt the 			Builder pattern (Item 2) from object construction to method invocation.
+
+	For parameter types, favor interfaces over classes (Item 52). If there is an
+	appropriate interface to define a parameter, use it in favor of a class that imple-
+	ments the interface. For example, there is no reason ever to write a method that
+	takes HashMap on input—use Map instead. 
+
+	Prefer two-element enum types to boolean parameters. It makes your code easier to 		read and to write. 
+
+	******
+	Use Overloading Judiciously 
+	NB: the choice of which overloading to invoke is made at compile time.
+	NB: The compile-time type of an object has no effect on which method is executed 		when an overridden method is invoked; 
+	
+	The compile-time type of an object has no effect on which method is executed when an 		overridden method is invoked; the “most specific” overriding method always gets 	executed. Compare this to overloading, where the runtime type of an object has no 		effect on which overload- ing is executed; the selection is made at compile time, 		based entirely on the com- pile-time types of the parameters. 
+
+	A safe, conservative policy is never to export two overloadings with the same number 		of parameters.  COOL!!!!!!!
+	
+	******
+	Use varags (variable arity arguments) 
+	Varargs methods accept zero or more arguments of a specified type.
+	Exercise care when using the varargs facility in performance-critical situations. 		Every invocation of a varargs method causes an array allocation and initialization. 
+
+	Varargs methods are a convenient way to define methods that require a variable 		number of arguments, but they should not be overused. They can produce confusing 		results if used inappropriately.
+
+	******
+	Return empty arrays or collections, not nulls. 
+	a collection-valued method can be made to return the same immutable empty collection 		every time it needs to return an empty collection. The Collections.emptySet, 		emptyList, and emptyMap methods provide exactly what you need. 
+
+	******
+	Write doc comment for all exposed API elements. 
+	To document your API properly, you must precede every exported class, interface, 		constructor, method, and field declaration with a doc comment. 
+	
+	The doc comment for a method should describe succinctly the contract between the 		method and its client. 
+
+	To describe a method’s contract fully, the doc comment should have an tag for every 		parameter, an @return tag unless the method has a void return type, and an @throws 		tag for every exception thrown by the method, whether checked or unchecked (Item 		62). By convention, the text following an @param tag or @return tag should be a noun 		phrase describing the value repre-sented by the parameter or return value. The text 		following an @throws tag should consist of the word “if,” followed by a clause 		describing the conditions under which the exception is thrown. Occasionally, 		arithmetic expressions are used in place of noun phrases. By convention, the phrase 		or clause following an @param, @return, or @throws tag is not terminated by a 		period. All of these con- ventions are illustrated by the following short doc 		comment: @param
+	/**
+	* Returns the element at the specified position in this list.
+	*
+	* <p>This method is <i>not</i> guaranteed to run in constant
+	* time. In some implementations it may run in time proportional
+	* to the element position.
+	*
+	* @param index index of element to return; must be
+	*
+	non-negative and less than the size of this list
+	* @return the element at the specified position in this list
+	* @throws IndexOutOfBoundsException if the index is out of range
+	*
+	({@code index < 0 || index >= this.size()})
+	*/
+	E get(
+
+	@code (Reners code in a doc comment in code font). 
+	@literals renders html special characters in doc comment without being escaped b. 
+		
+	no two members or constructors in a class or interface should have the same summary 		description. (Note: Summary Description is the first line in the doc comment above). 
+	A period after the summary description terminates the desciption. Also note that 	 @param, @return, @throws should not be terminated with a period. 
+
+	When documenting a generic type or method, be sure to document all type parameters:
+
+	When documenting an enum type, be sure to document its constants as well as the type 		and any public methods. Note that you can put an entire doc com- ment on one line if 		it’s short: 
+
+	/**
+	* An instrument section of a symphony orchestra.
+	*/
+	public enum OrchestraSection {
+	/** Woodwinds, such as flute, clarinet, and oboe. */
+	WOODWIND,
+	/** Brass instruments, such as french horn and trumpet. */
+	BRASS,
+	/** Percussion instruments, such as timpani and cymbals */
+	PERCUSSION,
+	/** Stringed instruments, such as violin and cello. */
+	STRING;
+	}
+
+	Rembmer that when writing java doc comments, HTML metacharacters must be escaped. 
+	
+
+Chapter Eight(8) 
+	General Programming 
+	Minimize the Scope of Local Variables 
+	-	The most powerful technique for minimizing the scope of a local variable is 			to declare it where it is first used. (Minimize the scope of variables) 
+	-	Nearly every local variable declaration should contain an initializer. If
+		you don’t yet have enough information to initialize a variable sensibly, you 			should postpone the declaration until you do.
+	-	Prefer for loops over while loops when it comes to local variables scopes. 
+	-	A final technique to minimize the scope of local variables is to keep methods
+		small and focused.
+
+
+	Prefer For-each loop over for loops as it offers performance advantage when 		iterating over collectins, arrays or anything that implements the <Iterable> 		interface. Let your class implenent iterable when it is used to group things. 
+	
+	Know and use the libraries. A good example is the Random.nextInt(n) which helps in 		the generation of secure random numbers.  By using a standard library, you take 	advantage of the knowledge of the experts who wrote it and the experience of those 		who used it before you.
+
+	Economies of scale dictate that library code receives far more attention than most 		developers could afford to devote to the same functionality. Don’t reinvent the 	wheel. If you need to do something that seems like it should be reasonably common, 		there may already be a class in the libraries that does what you want.
+
+	Don’t use float or double for any calculations that require an exact answer. Use 		BigDecimal if you want the system to keep track of the decimal
+	point and you don’t mind the inconvenience and cost of not using a primitive type.
+	Using BigDecimal has the added advantage that it gives you full control over
+	rounding, letting you select from eight rounding modes whenever an operation
+	that entails rounding is performed. This comes in handy if you’re performing
+	business calculations with legally mandated rounding behavior. If performance is
+	of the essence, you don’t mind keeping track of the decimal point yourself, and
+	the quantities aren’t too big, use int or long. If the quantities don’t exceed nine
+	decimal digits, you can use int; if they don’t exceed eighteen digits, you can use
+	long. If the quantities might exceed eighteen digits, you must use BigDecimal.
+
+	Prefer primtive type to boxed primitives. Every primitive type has a corresponding 		reference type, called a boxed primitiv. 
+
+	There are three major differences between primitives and boxed primitives. First, 		primitives have only their values, whereas boxed primitives have identities
+	distinct from their values. In other words, two boxed primitive instances can have
+	the same value and different identities. Second, primitive types have only fully
+	functional values, whereas each boxed primitive type has one nonfunctional value,
+	which is null, in addition to all of the functional values of its corresponding prim-
+	itive type. Last, primitives are generally more time- and space-efficient than boxed
+	primitives. All three of these differences can get you into real trouble if you 	aren’t careful.
+	
+	Use primitives in preference to boxed primitives whenever you have the choice. 		Primitive types are simpler and faster. If you must use boxed primitives, be 		careful! Autoboxing reduces the verbosity, but not the danger, of using boxed 		primitives. When your program compares two boxed primitives with the == operator, it 		does an identity comparison, which is almost certainly not what you want. When your 		program does mixed-type computations involving boxed and unboxed primitives, it does 		unboxing, and when your program does unboxing, it can throw a NullPointerException. 		Finally, when your program boxes primitive values, it can result in costly and 		unnecessary object creations.
+
+	Strings are poor substitutes for other value types. For example some input might 		come in from the standard input as string but ideally they are meant to be converted 		to other types such as numeric, boolean or object. IN this case, never use String as 		a substitute for this type.Rather, convert the string to its appropriate type 		before	computation. 
+
+	Strings are poor substitutes for enum types. Look deeply into this type and decide 		if it should be made enum rather than string constatns. 
+	Avoid the natural tendency to represent objects as strings when better data types 		exist or can be written. Used inappropriately, strings are more cumbersome, less 		flexible, slower, and more error-prone than other types. Types for which strings are 		commonly misused include primitive types, enums, and aggregate types.
+
+	The moral is simple: don’t use the string concatenation operator to combine more 		than a few strings unless performance is irrelevant. Use StringBuilder’s append 	method instead. Alternatively, use a character array, or process the stringsone at a 		time instead of combining them. This performance issue that arise in using String 		concantenation for reasonable large sized string is due to the fact that String is 		immutable, that is cannot be altered after creation. Therefore, when concantenating 		what the compiler does is to copy the values of each string under reference each 		time the concantenation operator is invoked. StringBuilder solves this issue by 	declaring a maximum length and appending each string value and thereafter returning 		the toString representation of the finally built string. This is much more faster 		tham concantenation when input size is large for concantenation. 
+	For an Example: 
+	public String statement() {
+		StringBuilder b = new StringBuilder(numItems() * LINE_WIDTH);
+		for (int i = 0; i < numItems(); i++)
+		b.append(lineForItem(i));
+		return b.toString();
+	}
+
+	Refer to objects by their interfaces. If appropriate interface types exist, then 		parameters, return values, variables, and fields should all be declared using 		interface types. If you get into the habit of using interfaces as types, your 		program will be much more flexible. It is entirely appropriate to refer to an object 		by a class rather than an interface if no appropriate interface exists. 
+
+	As a rule, objects should not be accessed reflectively in normal applications at 		runtime. 
+
+	Use Native Methods judiciously. The Java Native Interface (JNI) allows Java 		applications to call native methods, which are special methods written in native 		programming languages such as C or C++. (JNI). Finally, native methods were used to 		write performance-critical parts of applications in native languages for improved 		performance. think twice before using native methods. Rarely, if ever, use them for 		improved performance. If you must use native methods to access low-level resources 		or legacy libraries, use as little native code as possible and test it thor-
+	oughly. A single bug in the native code can corrupt your entire application.
+
+	Optimize judiciously. Avoid premature optimization. Don’t sacrifice sound 		architectural principles for performance. Strive to write good programs rather than 		fast ones. Strive to avoid design decisions that limit performance.
+	The more code in the system, the more important it is to use a profiler. The more 		code in the system, the more important it is to use a profiler. It’s like looking 		for a needle in a haystack: the bigger the haystack, the more useful it is to
+	have a metal detector. Do not strive to write fast programs—strive to write good 		ones; speed will follow. No amount of low-level optimization can make up for a bad 		choice of algorithm. 
+
+	Adhere to generally accepted naming conventions. THer are two types of naming 		conventions in Java Language Specification, this include: typographical and 		grammatical conventions. 
+	Typographical is mostly in wide use where 
+	Package names are gotten from the toplevelDomain.component.component. 
+	Class, Interface, Enum and Annotation names start with a capital letter. 
+	Methods and field names are both in this format methodName. Use expressive method 		and field names. 
+	Grammatical is also in use, examples ot its usage include 
+	toType (toString) that takes an object and convert it to a another object of another 		type. asType (asList) takes an object and provide a view in another object type. 		e.t.c. 
+
+CHAPTER NINE (9)- EXCEPTIONS 
+	1Exceptions are, as their name implies, to be used only for exceptional conditions; 		they should never be used for ordinary control flow. Therefore, for the fact that 		there are no more apples in the basket does not warrant you throw an exception or 		ecnlose the statement in a try-catch block, this can be handled by just providing 		state-testing methods for the state-dependent flow or action. COOL!!
+	
+	2The Java programming language provides three kind of variables which are 
+	- CHecked Exceptions (Exceptions that are means and thrown to be caught by callers) 
+	- Runtime Exceptions (Unchecked. NOt meant to be caught but to stop/halt execution)
+	- Errors (Unchecked. Not meant to be caught but to stop/halt execution) 
+
+	3Use checked exceptions for recoverable conditions and runtime exceptions for 		programming errors. Checked exceptions are subclasses or should be implemented as a 		subclass of Exception. While unchecked exceptions (runtime excepitons and or errors) 		are subclasses of RuntimeException. Erros are conditions thta happen that can cause 		the program to stop further execution because of an invariant fialure, lack of 		resource  or some conditions. 
+
+	

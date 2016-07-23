@@ -1,31 +1,104 @@
+TTEAM COLLABORATION WITH GIT 
+Git Workflows 
+- Centralized Workflows 
+	Only one master branch is maiianed on both local machine and server. Therefoer, any one that wants to pull or push will do that on the 		maste branch.  (This workflow encourages thoroug testing..)
+
+- Feature Branch Workflow 
+	This type of work flow works by creating banches for each new features and to merge the feature branch to the master branch one feature is 		completed and also to also make sure to always merge master into feature branch while feature is still being worked on because some other 		people might be changes to the master branch while the feature branch is being worked on. 
+
+- Gitflow 
+	This is similar to Feature Branh workflow, but unlike  FBW all branches have specific tags which include 
+	* Production/Stable (master) 
+	* Dev
+	* Feature Branch 
+	* Release branch 
+	* Hotfix Branch. 
+	In this workflow, the only commits that get merged to the stable branch are those from release / hotfix.. 
+	Every merge to the master branch must be tagged. Since, we merge to the master from either the release or hotfix, the tags are necessary 		to indicate what release versition it is after merging. 
+
+	Workflow 
+	master -> Dev <-> feature (So features can only be merged into Dev. for test purposes. Dev must be kept in sync with master always. 
+	................................................................................................	
+	master <- release <-> dev <-> feature (Release can be merged  into master and tagged, dev can be merged to and from release and feature to 		and from dev. 
+	.................................................................................................
+	master <- hotfix <-> release <-> dev <-> feature (Release can be merged  into master and tagged, dev can be merged to and from release and 		feature to and from dev
+	.....................................................................................................................
+	master <-> hotfixx -> dev <-> feature 
+
+- Forking 
+	Forking or (Forked repository is a way to create a copy of the main repository. Such that any changes, commits, merges are don directly on 		thiis copy. The only person that has acccess to this copy is the person that forked the repo. Other participants can also be added 		though.. 
+	
+	
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+GIT CORE 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 YET ANOTHER GIT
+THe four git stages include 
+	* untracked  - has not been tracked 
+	* unmodified  - Has been added but nothing has changed since it was last added 
+	* modified  - Has been added and something has happended since it was last added 
+	* staged / indexed  - All changes have been "commited" THis process re-iterate from 2 down to four again..
+
+============================================================================================================================
+
 -- "pwd- shows the working directory witout using the terminal from the bash 
 - "ls" lists the content of the current directory 
 - cd to the directory (All these works without having to another terminal from the git bash). 
+- Git tracks file changes as well. To ignore this default behaviour, use the config.. 
 - "git init" 
 - "git status" 
 - ".gitignore' - put the name of any files or (directory/) you want git to ignore (that is, you don't want git to track). 
 - git add . or git add * adds all files in the current working directory
 - "git log" shows all commits that has been made
 - "git log --oneline" shows a summarized version of git log 
+- "git clean -n" - Lists all untracked files 
+- "git clean -f <file name>" - Delete an untracked file 
 
 - "git diff" displays what has changed between the listed commits (git diff comit_id commit_id2) 
 Nnote: "git diff" can also be used to check the differences between our working directory and the last commit. To do that just use the "git diff" command.  
 
+- "git submodule add /path/to/repo" this creates another repo within an existing repo as a sub repo...Git wouldn't allow this if not for the 		submodule git command . 
+" git grep "whatAreYouLookkingFOr" <Optional Where> 
+
 - "git commit -a" does both adding to the staging area (tracking) and committing at the same time. 
 - " git commit -m ['comment']
 - " git commit -a -m ['comment']
-- "git add -p"
+- "git cat-file -p [commit_sha]  - This shows the full details of a particular commit, including the commiter, author and parent commit e.t.c. 
+- "git cat-file -t [sha] - Tells
+- "git show-ref <branch name>" - Prints the snapshot or commit this branch is referencing 
+- "git reset HEAD - This unstages the current changes 
+- "git branch <branch-name> <star-point>" this makes it possible to create a branch from any commit. So that the branch points to the specified commit object instead of the HEAD.
+- "git clone <repo_url>" 
+- "git clone <source path> <destination path>" THis can even be used to clone to and from a flash drive e.t.c. COOL. 
+- "git show <branch name> | <sha>"
+- "git blame <file name>" - SHows the details of what changed and who made the changes to this file. 
+- "git cherry pick <branch name><branch to copy from>" picks the comits that are in the later branch and not in  the current branch 
+- "git checkout -b <branch name>" this checks out from the currenet branch and creates a new branch as the current branch 
+- "git tag -a <release number> -m "comment" 
+- "git checkout tag" 
 
+- "cat .git/HEAD" hows the branch the HEAD pointer currently points to.. 
+ 
+- "git commit --amend - This unstages the last commit in order to edit the commmit message and all. 
+- "git add -p" ['filename'] - This adds only a part of the file to the staging area or index file instead of adding all files which is the default. Doesn't work for untracked files.  
+
+
+- a "sha" is the unique identification of a commit (That guy that appears before a commit message when you do git log) 
+
+==================================================================================================================================
 PATCH MODE 
 This is used to divide commits or files to be staged into small chunks before commiting. 
 This is done using the "git add -p" With this command, you can easily select the chnages you want to commit leaving out those you don't want to commit. 
 
+===================================================================================================================================
 BRANCHING 
 This is used to isolate chanes or separate one chane from on  a project without affecting one another It's used best to add/test new features with theability  to still be able to retrieve old branches with old features and staes (State Manager I'll call it). 
 Note: What is done on one branch WILL not been seen on other branches (Not even the master). Therefore, changes made in one branch is independent of another branch. All changes must be committed befor checkout a branch (switching a branch). 
 
-
+====================================================================================================================================
 Creae a New Branch 
  - git branch ['branch_name'] 
 
@@ -48,7 +121,7 @@ Merging two brahcnes
 * Change to the branch you want to merge into and call the branch you want merge from 
 - git merge ['branch to merge from']  (After this, edit the code, remove those things you dont want and commit on the current branc) 
 
-
+==========================================================================================================================================
 HEAD 
 There is no limit to then umber of branches each checkout can have. What is simply done is the HEAD pointer is moved to the new checked-out branch so as to enable other branches to be created from this branch 
 
@@ -69,7 +142,7 @@ There is no limit to then umber of branches each checkout can have. What is simp
 					Test3-2
 				Test-4
 
-
+=======================================================================================================================================
 Creating a branch from a specific ommmit 
 once you are in the commit... 
 - git checkout -b "branch name" 
@@ -108,6 +181,4 @@ Note3: Comments should be about what has changed, what hs been unchanged e.t.c
 git add remote origin (repo url) 
 git pull origin (branch) 
 git push origin (branch) 
-
-
 

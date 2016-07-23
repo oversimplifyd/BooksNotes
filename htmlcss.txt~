@@ -1,0 +1,374 @@
+The  DOCType declaration is placed on top of the page to check for standard compliance
+
+Validating to HTML CSS 
+- Validator.w3.org 
+	This is to ensure developers  write future-proof, correct, maintainable codes 
+
+Sitemap 
+	This is  created at the eginning of every project to define how many pages the project will contain 
+
+Wireframes 
+	This is a quick mock up of whatthe pages will look like. that is the position of elements on the pages. 
+
+Meta data are used to rovided additional information about the page. It takes attributes in its tag... 
+These meta tags aer not displayed as contents because they are simply information to be used by computer programs such as web optimizers or search engine optimizaters... 
+
+<div> is generic, it is used to group otherelements together. It has no semantic meaning.
+**********************************************************
+		body
+			div
+				header 
+					nav
+				section
+				footer
+***********************************************************
+				article 
+					div						
+						header 
+							nav
+						section
+						footer
+************************************************************
+The article element is self contained. Tat is even after every other elements on the web page has been taken away, It's contents still remains in tact. 
+
+TARGET 
+	_blank 	- WHen found in a link as an attribute, open link in new page 
+	_self 	- default behaviour. Opens link in current window 
+
+
+HROUP 
+	Groups multiple header elements 
+
+
+FIELDSET 
+	THis is use to specify a group of inputs 
+	Reemember an input is also a group of label and input tag 
+
+LEGEND 
+	This is used to specify the title of the fieldset, it should come after the fieldset tag
+
+HTML INput Types 
+	color, date, time, week, month, range, text, number, password, accept
+
+HTML Input Attr 
+	AutoComplete - by default it is on 
+	AutoFocus - by default it is off 
+	Min and Max - for numbers input type 
+	step 
+	Placeholder 
+
+Datalist 
+	This is used to suggest inputs for users 
+	<input list="whatever">
+	<datalist>
+		<option value="dkd">
+		<option value="dkd">
+		<option value="dkd">	
+	</datalist>
+
+Accessibility 
+	Use labels with all your form controls
+	Using tabIndex to arrange tabORder for tab key behaviour on input elements
+	use <caption> after table tag to make tables accesssible. Just to say few words about the table. 
+	use "scope" attributes on <th> to make them accessible 
+	use "alt" attr on images to make them accessible 
+	use "title" on links to describe where they are linkingn to and also make the anchor tet very descriptive. 
+
+Accessibility TEst 
+	wave.webaim.org 	- Mark UP
+	spurapp.com		- visual design 
+
+
+
+* The role attribute is used to assist screen readers to easily identify the "roles" of Call to Action (CTA) areas such as banner, navigationi, main e.t.c
+
+Cascade Style Sheet (CSS) 
+	Browser Support Techniques 	
+		Graceful Degradation 		(Newer down to OLder) 
+		Progressive Enhancement 	(Older to Newer) 
+
+	use the "@import url("tylesheetname") to reference one stylesheets from another stylesheet. 
+	use the "@media mediaType {}" to add styles for a selected media which overrides the active style sheet. by default styles are applied to all 			media types
+	UserAgents stylesheets are styles  applied to html pages by default by browsers. THis can be undone by doing a RESET. 
+	
+	Selectors 
+	Universal 		( * ) 
+	Type 			( ELement Name )
+	Ids			( #idname )
+	CLass			( .classname ) 
+	Group 			( comma sepaated element names ) 
+	Combinators 		
+		Descendant 	( space separated element name) 
+		Child 		( root element > child element ) 
+		Adjacent Sibl	( root element name + succeeding element ) 
+		General Sibli	( any element ~ any element ) 
+	Attribute Selector 	( ELementName[attribue="value"] ) 
+		Multiple Attr	( ElementName[attr="val"][attr="value"] ) 
+	Pseudo-class Selection 	( ElementName ":" pseudoclassName ) e.t. 
+					hover, 
+					visited, 
+					focus, 
+					active, 
+					link,
+					nth-child(index) 	(IE 6, 7, 8 X) 
+					first-child
+					last-child
+					nth-last-child(index)
+					only-child
+					nth-of-type()		(IE 6, 7, 8 X) 
+					first-of-type()		(IE 6, 7, 8 X) 
+					last-of-type()		(IE 6, 7, 8 X) 
+					only-of-type()		(IE 6, 7, 8 X) 
+					enabled			(IE 6, 7, 8 X) 
+					diisable		(IE 6, 7, 8 X) 
+					root			(IE 6, 7, 8 X) 
+					empty 			(IE 6, 7, 8 X) 
+	Pseudo-ELement Selection (Same as Pseudoclass) 
+					first:line 
+					first:letter 
+					after 
+					before 
+
+
+
+Rules of Specificity 
+	II 				- 100 
+	class, pseudo-class		- 10 
+	element, pseudo-element 	- 1
+	InLine Styles 			- 1000 
+	Order of Arrangement 		(The Latter Rule is active when all things are equal) 
+	
+	Note: THe !important rule compulsorily applies this rule regardless of specificiy. It is best used with error-class styling. 
+	
+Colors 
+	Hexadecimal
+	SHort Hexadecimal 
+	RGBA 
+	HSL
+	HSLA (Where "a" is transaparency) 
+
+UNits 
+	Absolute UNit: THey are fixed and they dont realte to one another. they are not inherited. 
+		Physical UNit 
+			in - inch 
+			pt - point 
+			mm - milimeter 
+			cm - centimeter 
+		Pixel Unit 
+			px - pixel ( 1px = 0.75pt) 
+
+	Relative Unit: These are units that are inherited. THat is they relate to their parent units. THis units are calculated based on the 		prevailing unit of the parent element in the presence of any. 
+		Em - 		WHen using with font sizes (NOte it is always best to set font sizes on parent elenent in order for base elements to 					inherit it..
+		percentage (%) 
+
+
+Using Experimental Properties 
+	Properties that are yet to be fully implemented by all browsers, each of the known broswers have their unique ways of working around these 		prooperites and thus for an experimental property, it is best you prefix the property with all browsers prefix before finally includin the 		experimental property. This works such that when the property is now supported, the browswer prefix becomes obsolete and the normal i now 		used. "the fall-back". THere is also a tool for generating these browers defined implementation of these properies. 
+
+Borders 
+	Border-color (SHort hand (border:) 
+	Border-style 
+	BOrder-width 
+	BOrder-radius 
+	border-image-source (SHort hand border-image: ) 
+	border-image-slice 
+	border-image-width 
+	border-image-outset 
+	border-image-repeat
+
+Box-shadow 
+	box-shadow 
+		horizontal offset, vertical offset, opacity, spread, color, inset/outset; 
+				Note: A negative value here would be for left and negative foor vertical would be for top. Play around with it ha!! 
+		Multiple box shadows can be applied to an element!!!! s
+
+Backgrounds 
+	background-color 
+	background-image: url()
+	background-repeat 
+	background-position 
+	background: background-image background-position background-size
+	repeat-style attachment background-origin background-clip background-color
+
+	We also touched linear gradient page 100
+	Image Replacement was also covered. That is replacing text with images. This simply involves making the font transparent. 
+		font: 0/0 a;
+		text-shadow: none;
+		color: transparent;
+
+Opacity 		(Between 0 and 1) 		(IE 6, 7 and 8 X) 
+Visibility: 		(visible, hidden, collapsed)
+Cursor			(crosshair, default, pointer, move, e-resize, ne-resize, nw-resize, n-resize, se-resize, sw-resize, s-resize, w-resize, text, 				wait, help, and progress.
+
+Structure Type 
+	FLuid  - FOr fluid web contents automatically resizes itself to fit the device dimension. It is default behaviour 
+	Fixed  - With fixed, we set a fixed with such that no matter the device type, the width remains the same. 
+	Hybrid - This is the combination of fluid and fixed. 
+		Tips: 
+		Max-width {body} - 960px
+		max-width (inherited such as img) - 100%. That is fill 100% of parent element no matter the screen size. 
+		margin: {body} 0 auto. THat is no top and bottom margin but left and right should be automatically adjusted depending on the space 				available. 
+
+
+Box Sizing and the Box Model 
+	If you give an element width 100%, This width applies to the content area. Therefore, the padding and border sizes added to it plus the 100% 		of the new content-area makes it extend more than the intended 100%. THat is it adds up and the width becomes mroe than 100%. So ideally, the 		100% should have been that both the addition of padding and border sizes and content area should be 100% but because the width property by 		default appplies to content area it makes it add up all the extra padding and makes it ehave weird.
+	Solutions: 
+	1. Technically adjust to fit your purpose; 
+	2. Use the box-sizing: border-box; instead of the default content-box; Such that the widht property is applied across the element itself 	    instead of the default content area only. (IE 6, 7 not supported)
+
+GOod Practice for Elements containg floats; 
+	I personally use and recommend a technique that has evolved
+	over time and eventually been given the name micro clearfix hack by Nicolas 		Gallagher, who has
+	worked to make this particular technique as small and efficient as possible.
+	GIve them a class of .group 
+	.group:before, .group:after {
+	content: “”;
+		display: table;
+	}
+	.group:after {
+		clear: both;
+	}
+	.group {
+		zoom: 1;
+	}
+	THe above code cleans up spaces and makes it nice and dandy, 
+
+Document Flow 
+	THere are basically three types of D.FLow namely 
+	1. Normal Flow (Default))
+	2. Absolute Positioin (OUt of flow) 
+	3. FLoat 
+
+Display 
+	block, inline, list-item, inline-block, table
+	The major difference between inline and inline-block elements is that 
+	1. the latter can be given width, height and margin property 
+	2. THe latter is by default separated using 4px spaces. While the former has no 		spaces in-between. 
+	
+	Inline elements right and left spaces does not respond to auto. THerefore, to work 		around this, make the display: block instead. 
+
+	Inline level elments cannot be affected by properties such as "width, height and 	margin"
+
+Position 
+	Element positioning can affect the document flow depending on position 
+	BY default all elements ahve the position : static which keeps them in flow. 
+	
+	Static 
+	This is document efault posiitioning. TOp, bottom, left and right cannot be 		set.
+	
+	Relative 
+	IF an element is positioned rela	tive. Top, bottom, right and left 		properties can be set. This would still retain the element's innitial space on the 		document flow but the element itself can be moved as desired. 
+
+	Absolute 
+	Unlike relative, the element is removed completely from the document flow. Every 		other properties apply just as in relative. Simply, when the page is scrolled, 		this element scrolls with the page. 
+
+	Fixed 
+	Same as absolute but element does not scroll while document scrolls. It is fixed. 
+	
+	THE z-index is used to reposition elements that are stacked on of one another when 		they have been repositioned. 
+
+	THE vertical-align property can only be used on inline-level element. 
+	VErtical-align does not work for block level elements, therefore this has to be 	intelligently done using positions and z-index. 
+
+	OVerflow, overflow-y {hiddden, scroll) 
+
+Fonts.. 
+	While an element's font size is relative to its parent font size when using 		relative such as percentage and em, the margin and padding of the same element is 		relative to the font-size when using (em) but relative to the element's widith 		when using perentage. Therefore it is better to use (em) for an element's font 		size since properties such as padding and margin are relative to its font-size 		when using (em). 
+
+	font-size, font-family, fon-weight, line-height(same as line spacing.. lolz)
+	text-decoration, text-transform, text-align, letter-sapcing, white-space, word-wrap
+
+LIst 
+	list-style-position, list-style-type, list-style-image 
+
+TRANSITIONAL EFFECTS... woola..  
+	COmmon 2D transitions inlcude: All these guys requires vendor prefixes.  
+	translate(), translateX(), translateY(), (Moves HOR and VERT) 
+	scale(), scaleX(), scaleY(),  (Increase, HOR AND VERT) 
+	rotate(), (Rotaes in degress, gradain, radian or turn)
+	skewX(), and skewY() (SLants in degree) 
+	
+	These transform properties afffects both the element and its content. Vendor 		prefixes and the official property.
+	
+	3D
+	Before 3d can be applied two things must be done on the parent element to which 	the effect must be applied namely: 	
+	1. Set a perspective (-moz-transform-perspective: (in pixel) 
+	2. Set a perspective origin (-moz-transform-perspective-origin (%) (%)) 
+	
+	Note: 3D can only be applied to the DIRECT CHILDREN of the parent element. 		Although children of this element inherit from the transformation made on their 	parent element. 
+
+	TO apply 3d to grand-children element INDEPENDENTLY without a need to first 		transform their parent element. Set the 3d transform-style to be preserve-3d
+		
+	translateZ(), translate3D(X, Y, Z)
+	rotateZ(), rotate3D(X, Y, Z)
+	scaleZ(), scale3D(X, Y, Z) 
+	
+ANIMATIONS 
+	
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+	
+
+
+<div> - This is short for document division. This element in itself is generic and has no semantic meaning other than grouping elements. 
+section, nav, footer, header are also document division elements with good semantics.. 
+
+Void elements such as <meta> tags have no end tags.. 
+
+Spaces..
+Units 
+Document FLow 
+DIsplay 
+
+
+I bet you still remember that the css3 box-model property is still not supported by all browsers and thus it needs browser specific prefix to handle their respective implementations pending the time the property gets full support. THank your goodness for prefixr.com... 
+
+
+CANVAS 
+	- Canvas Element 
+	- getContext('2d')
+	- width, height 
+	- startX, startY
+	- moveTo()		MOves the pencil to the specified starting point 
+	- lineTo() 		Draws a line to the specified end point. this and the previous work together 
+	- stroke() 
+	- strokeStyle()
+	- strokeRect() 
+
+Canvas default size 		300 x 150 pixels 
+
+
+fillRect(x, y, width, height)
+    Draws a filled rectangle.
+strokeRect(x, y, width, height)
+    Draws a rectangular outline.
+clearRect(x, y, width, height)
+    Clears the specified rectangular area, making it fully transparent
+
+beginPath()
+    Creates a new path. Once created, future drawing commands are directed into the path and used to build the path up.
+Path methods
+    Methods to set different paths for objects. (moveTo(), lineTo(), arc())
+closePath()
+    Closes the path so that future drawing commands are once again directed to the context.
+stroke()
+    Draws the shape by stroking its outline.
+fill()
+    Draws a solid shape by filling the path's content area. 
+
+
