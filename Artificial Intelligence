@@ -1,0 +1,327 @@
+CIT 478 (Artificial Intelligence) 
+======================================================================================================================
+--------------------------------------
+UNIT 1
+--------------------------------------
+AI is a branch of science that helps machines to solve complex problem in a more human-like fashion.. 
+
+AN intelligent entity should be able to solve 
+	* Common place tasks (object recognition, communication and navigation).. 
+	* Expert taks (Medical Diagnosis, Mathematical problems and playing complex games 
+	Humans find the first type of problem easy and the other difficult but machines find the latter 	easy and the former easier.. 
+
+What makes you intelligent? 
+	* Reasoning 
+	* Learning 
+	* Natural Language Processing, ability to understand natural languages 
+	* Problem Solving 
+
+Examples of AI systems that are already in everyday use includes 
+	* Fraud Detection System 
+	* Intelligent Tutoring Systems 
+	* Speech Recognition Systems  e.t.c 
+
+Famous of some AII includes 
+	* ALVINN (Autonomous Land Vehicle in a Neural Network) - THis AI system controls a vehicle by 		watching a person drive it first. 
+	* Deep Blue - A Chess engine built by IBM and beats Gary.. WOrld famous as at then..
+	* Machine Translation: Translates a language back and forth and helps in disucssion 
+	* Autonomous Agents: Used in space for studying the surrounding and help make decisions based on 		its findings.. 
+	* Internet Agents 
+
+Approaches to AI	
+	STRONG AI: This maintains suitably programmed machines are capable of cognitive mental states. (That is, truly reason and think like 		humans) 	
+
+	WEAK AI; This maintains that suitably programmed machines are capable of SIMULATING cognitive mental states. That is they can act as if 	they were intelligent. 
+
+	APPLIED AI: Aims to produec commercially smart system that can for example recognize a human face. Has enjoyed a considererable success.. 
+
+	COGNITIVE AI: In this approach, computers are used to test theories on how the human mind works.. 
+
+What Can AI DO as at now? 
+	* Face Recognition 
+	* Speech / Voice Recognition
+	* Machine Translation (Translate languages back and forth 
+	* Medical Diagnosis 
+	* Autonomous Cars (Self Driving Cars) 
+	* Play complex games 
+	* Web Crawlers.. 
+
+What Can"t AI DO as at now? 
+	* Exhibit true autonomy and intelligence
+-	* Learn a natural language robustly (e.g. reading and understanding an article) 
+	* INterpret an arbitrary visual scene 
+	* Surf the web 
+
+======================================================================================================================
+--------------------------------------
+UNIT 2 
+--------------------------------------
+INTELLIGENT AGENTS 
+	- An agent perceivess its environmeent using SENSORS 
+	- A PERCEPTis the set of input perceived by the agent at  a given time 
+	- An EFFECTOR/ACTUATOR is the operation that invovles an ACTION taken on these sequences of PERCEPTS 
+	- An agent FUNCTION maps the agent's PERCEPTION history to ACTION. This help theagent decides what ction it ought to take in the event of a 			perception etcetera.. 
+	
+	Examples of intelligent Agents incldue 
+	- Humans - Robots - Softbot (Ask.com) - Expert Systems (Cardiologist) - Intelligent Building - Autonomous spacecraft e.t.c. 
+
+	Agent Faculties 
+	- 	Acting - Sensing - Understanding, Reasoning and Learning.. Many bots acts based on percepts on what was sensed bbut do not really 			understand or make RATIONAL actions (Optimal actions). A Rational agent is one that knows all and will take action that will 			maximize her utility. Humans are not rational but exhibits BOUNDED RATIONALITY which means they act based on their best abilities 			and resource constraints. 
+
+	Bounded Rationality 
+	This is that property of an agent that behaves in a manner that is nearly optimal with respect to its goals as its resources will allow. 		Proposed by Herbert Simon (1972) 
+
+	Agent Environments 
+	These environment's can be viewed under the following 
+	* Observability: An environment can be fully observable (That is nothing really is changing and the whole environment can be observed. An 			example of this is the CHess System. Some enviornments can be partially observable like the game of "Bridge" 
+	* Determinism: In this view of environment the next state is determined by the current state and the agent's action. Example Image Analysis 			and the CHess System also. 
+	* Episodicity: The next episode is not dependent on the previous episodes. 
+	* Dynamism: While static enviornment  does not change, dynamic environment changes over time independent of the agent's actions. 
+	* Continuity: In a continuous environment, the number of PERCEPTS and ACTIONS is NOT limited. THe opposite of this is "discrete" 
+
+	Agent Architectures 
+	- Table Based Agents 
+		In this architecture, agents have very little autonomy as ACTIONS are looked up in a table for any input or percept. 
+		Disadvantage: The table might become too large and time consuming for the agent to learn, all actons are pre-determined, therefore, 			in the event of a new percpet that requires a new action the system fails. 
+	- Reactive Agents, also called Percept based or Reflex agents
+		This agents unlike the table based agents have no history/table of actions. THey only take actions based on the current state. 
+		Thye have sensors - percepts 
+		They change the state of the agents of the world and 
+		Triggers actions through effectors..  
+	- State based agents 
+		This is like reactive agents but contrary to the reactive agents, state-based agents have knowledge(memory) to maintain some state 			based on the precept sequences received so far in order to help the agent know about how the world evolves and its actions affect 			the world. THese states are updated regularly based on the agent's percepts.  
+	- Goal based agents
+		- Similar to State based agents but takke actions based on some predefined goals.  
+	- Utility based agents 
+	- Subsumption architecture 
+	- Learning Agents 
+		Learning is required for true autonomy and makes it possible for an agent to operate in an initially unknown environment.. Cool...
+	
+
+===============================================================================================================================
+MODULE 2 
+---------------------------------
+UNIT 3 
+---------------------------------
+STATE SPACE SEARCH 
+	Terms.. 
+	- Initial State  (Agent starting configuration) 
+	- Action  (Takes the agent from one state to another) 
+	- Succesor State  (THe state  after the effect of an action) 
+	- Plan  (Sequences of actions) 
+	- Path Cost (What it takes to perfrom a plan [sequences of actions] is called the PATH COST 
+-----------------------------------------------
+	* GOAL DIRECTED AGENT 
+	A goal directed agent selects its actions based on certain goals that it has.  
+	
+	Examples of goal directed agents include 
+	- 15-puzzle: The goal of an agent working on a 15-puzzle problem may be to reach a configuration which satisfies the condition 	that the 			top row has the tiles 1, 2 and 3.
+	- The goal of an agent may be to navigate a maze and reach the HOME position.
+-----------------------------------------------
+	State Space Search Notation 
+	Search is the process of considering various possible SEQUENCES of OPERATORS applied to the INITIAL STATE, and finding out a sequence which
+	culminates in a GOAL STATE. Cool.. 
+----------------------------------------------	
+	Problem Space 
+	A problem space is a set of states and a set of operators. These set of states include initial state, intermediate state and goal state. 		In a problem spae we want to consider the how  best   operators can map an initial state to a goal state. A SOLUTION PATH is the sequence 		of operators that successfully mapss intial state to a goal state.  THe best solutoin to the problem is the shortest path from the intial 		state to the goal state. 
+-----------------------------------------------
+	A Search Problem 
+	A search problem is represented by tuple - {S, s0, A, G}. 
+
+	Where: 
+	S - Is the set of states 
+	S0 - Is the initial state which is an element of S (s E S) 
+	A - Is the set of actions / operators that maps a state to another state 
+	G - Set of Goal states. (These states are subset of S) 
+
+	Also, a solution plan P is the set of a sequence of actions (a0, a1, a2, an) which leads to traversing a sequence of states (s0, s1, s2, 		sn) known as PATH. 
+	A search problem is represented with a "DIRECTED GRAPH" where states are represented by nodes and actions by arch. See page 53. 
+	
+	Note: Each space has an allowable set of actions. 
+
+	Steps involved in finding a solution in a state space. 
+	* Check the current state 
+	* Execute one of the allowable actions 
+	* Pick the new state 
+	* If the new state is a solution state end else 
+	* the new state is the current state and the process repeats. 
+
+	Example Search Problems include 
+	- Peg and Disks 
+	- 8 Queens problem (Where you have to place each queen such that no one appears on the diagonal, horizontal or vertical of any other 
+	- 8 Puzzle (You remember that game nau..)) Wasere.. 
+
+	Types of AI Search Techniques: 
+	- Tree Search
+	- Uninformed Search
+	- Graph Search 
+	- SQL Search 
+	- Informed Search 
+	- List Search 
+	
+	Try solve the Tutor marked assignment.. 
+
+-----------------------------
+UNIT 2  
+------------------------------	
+UNINFORMED SEARCH (BRUTE FORCE SEARCH) 
+Uninformed search strategies also known as "blind search" use no information to strategies use no information about the likely "direction" of the goal node(s).
+Thise search includes 
+- Depth First Research 
+- Breadth First Search 
+
+	Depth First Search
+	Depth first search works by taking a node, checking its neighbors, expanding the first node it finds among the neighbors, checking if that 		expanded node is our destination, and if not, continue exploring more nodes. We can demonstrate this using open and closed list. 
+	An Open list keeps track of what you need to do, and the Closed List keeps track of what you have already done. Newly explored nodes are 	added to the beginning of the open list, while explored nodes are added to the end of the closed list. 
+	
+	Breadth First Research 
+	Similar to Depth First except that, newly explored nodes are added to the end of the open list instead. 
+
+-----------------------------
+UNIT 2  
+------------------------------	
+INFORMED SEARCH AND HEURISTIC SEARCH
+
+What is Heuristic? :++++++++++++++++++++
+	Heuristic Search methods explore the search space intelligently, they evalate possiblities wiithout hvaing to investigate every single 		possibility unlike an Uninformed Search. 
+
+	Heuristic simply means "Rule of Thumb". That is, they are criteria, methods, principles for deciding which among seceeral courrse of 		actions promises to be most effective in achieving some goal. In heuristic search or informed search, heuristics are used to identify the 		most promising search path.
+
+	Heuristic Function 
+	An heuristic function at a node is the estimation of the optimum cost of the current node to a goal node. THis is denoted by h(n). 
+	
+	h(n) = optimum cost of the current node to a goal node 
+	H(n) = cost of the CHEAPEST PATH of a node to a goal node 
+	
+	Note: Cost is problem dependent, that is, it could be the distance to walk from A to B or the number of unarranged elements in an 8 puzzle 		problem.  
+
+--------------------------------------------------------------------------------------------------------------------
+	BEST FIRST SEARCH (An Heuristic Search Method) :++++++++++++++++++++ 
+	This is an algorithm that explores a graph by expanding the most promising nodes first which are chosen according to some set of rules. 
+	
+	Uniform Cost Search is a special case of the best first search algorithm. The algorithm maintains a PRIORITY QUEUE of nodes to be 		explored. A cost function f(n) is applied to each node. The nodes are put in OPEN in the order of their f values or cost.
+
+	Greedy Search (A Best First Search ALgorithm) :++++++++++++++++++++ 
+	* Expand the node with the smallest estimated cost to reach the goal node. 
+	* f(n) = h(n) where h(n) estimates the DISTANCE remaining to a goal node. 
+
+	A* Search (Another Best-FIrst Search Algorithm) :++++++++++++++++++++ 
+	* While greedy search uses a Cost Function f(n) - h(n) which etimates the remaining distance to get the goal node from node n, A* Search 		uses f(n) = g(n) + h(n) which is the sum of the edge cost of the initial state to node n and the distance remaining to get the goal node. 
+	Therefore, 
+	f(n) is the distance from start node to goal node through (n). 
+	Also,, f(n') which is a successor node will bbe 
+	f(n') = g(n) + cost(n, n') + h(n'). 
+		- g(n) = distance from start to parent node 
+		- cost(n, n') = distance of parent node to current node 
+		- h(n') = distance of current node to goal node. 
+	-------------------------------------------------------------------------------------------------------------------
+	Therefore, from the above, then f(n') >= f(n). This must hold true always for h to be consistent along a path. That is f never decreases 		along a path. 
+	-------------------------------------------------------------------------------------------------------------------
+
+	* h(n) in A* best first search is said to be ADMISSIBLE if it underestimates the cost of the cheapest solution path from a node n to the 		goal node.  That is h(n) <= C*(n) (Where C*(n) is the cost of the cheapest solution path from a node n to a goal node. 
+
+	* The heuristic function used most of the time is straight-line distance. 
+
+	* A* Admissibiity :++++++++++++++++++++
+	  Provided a solution exist, the solution found by A* is an optimal solution. 
+	 
+	When does A soluton exist? (A* Admissibility) A* is Admissible under the following conditions. A* is also complete under these cond.
+	 - Every NODE has finite number of successors 
+	 - Every ARC (formed from two or more connected noeds) in the graph has a cost greater than some e > 0.
+	 - An heuristic function exists for every node n. h(n) <= h*(n) 
+	 
+	When is an heuristic consistent? :++++++++++++++++++++ 
+	An heuristic is consistent if and only if h(n) <= cost(n, n') + h(n'). That is f(n') >= f(n). 
+	
+	About if h is inconsistent? :++++++++++++++++++++ 
+	If an heuristic is inconsistent, we tweak the value of f using the PATHMAX Equation. Simulated consistency. 
+	f(n') = max(f(n), g(n') + h(n')) 
+
+	-----------------------------------------------------------------------------------------
+	If f cost never decreases along ANY path the heuristic is sadi to be MONOTIC - monotone 
+	-----------------------------------------------------------------------------------------
+
+	Properties of Heuristic:++++++++++++++++++++
+	Dominance: Provided there are more than one applicable heuristics, h1, h2, if h2(n) > h1(n), A* uses the heuristic with most dominance for 		expansion.
+
+	BEAM SEARCH 
+	Beam search is an optimization of the best-first search that reduces a lot of memory requirements.  In beam search, the most promising 		node is expanded in a limited set. Beam search keps track of parital solutions and uses some heuristics to order the parial solutions and 		determine and how close they are to the complete solution (goal state). 	
+
+	Other informed search incldues Hill Climbing.
+	
+-----------------------------
+UNIT 4  
+------------------------------	
+TREE SEARCH 
+This is the speciallized version of graph search which takes all the porperites of a tree into account.. 
+
+	What is Game Tree? :++++++++++++++++++++ 
+	* A game tree is a DIRECTED GRAPH with NODES representing the current position in a game and its EDGES representing moves. 
+	* A complete game tree for a game is the game tree starting at the initial position and containning all possible moves from each position. 
+	* To pick the best move in a game, the game tree has to be searched. The game tree for a tic-tac-toe is about 26,330, this makes picking 			bet move for a tic-tac-toe fast and easiy but the game tree for games like chess is way to large and therefore partial search is 			used in this case by examining all possible moves from the current position rather than the entire game tree. 
+	* There are algorithms for search a game tree whch include Minimax, alphabeta pruning e.t.c 
+
+	Two Person Games  :++++++++++++++++++++ 
+	Two person games can be represented as and-or moves. 
+	That is, for every move of the second player, there must be a winning move to tacke this current move. 
+	
+	Two  Player Games Search Algorithms 
+	* Alpha beta pruning, Minimax, Transpoistion Table, Intelligent Backtracking, Limited DIscrepancy Search, Queiscence e.t.c 
+
+	Minimax Search Algorithm :++++++++++++++++++++ (Standard Two-person  game algorthm) 
+	The minimax search algorithm SEARCHES FORWARD to a FIXED DEPTH in the GAME TREE, limited by the amount of TIME available per MOVE. At this 		search horizon, a heuristic function is applied to the frontier nodes. In this case, a HEURISTIC EVALUATION is a function that takes
+	a board position and returns a number that indicates how favourable that position is for one player relative to the other..  		   		Ahahahahaha.. 
+	Having known this i am very sure I can beat the strongest chess engine in a blitz competition.. He got no CPU time for deep nalysis or 		(thinking so to say).. 
+
+	
+	Exercise.. 
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				**********************************************************************************
+						Go Back to Solve The exercise at Unit 3 A*. Do Not forget 
+				**********************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+

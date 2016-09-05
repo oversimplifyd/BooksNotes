@@ -1,3 +1,97 @@
+DS and Algorithm 
+A set of rules for solving specific type of problem. 
+
+ONE
+**********
+	* Euclid Algorithm use to find the GCD (Greadtest Common Divisor)) to two numbers m and n 
+	Given that, m > n, 
+	- Divide m by n and get the remainder 
+	- If remainder = 0, GCD = n else 
+	- m = n and n = remainder Go To 1.
+	* This is a recursive algorithm 
+
+TWO 
+***********
+	* Bubble Sort 
+	This sort a list of times by bubbling down the largest number foreach item. THe sorted position is marked and thus not re-visited again for 		each item. 
+	- For any bubble sort, worst case is give as 
+ 	* 2n(n-1) - Where n is the length of the list to be sorted. This will give the total number of steps that will sort the entire list. 
+	* Same as pn2 + qn + r (Where p, q and r are some known constants). For any number of times using bubble sort. 
+
+THREE 
+***********
+	* The Griwth of time of an algorithm depends on its input size. 
+	* AN algo. can have either linear or quadratic growth based on input size with time. 
+	
+	RAM Model of Computation 
+	In this model there are several assumptions which include 
+	- There is infinite amount of memory (That is there is no memory constraint) 
+	- Each operation (+ , -, *, /) takes a UNIT time 
+	- Each memory access takes a UNIT time 
+	- We want to assume that data in in RAM. 
+
+FOUR 
+***********
+	* 0(n2) is {f(n): there exists a positive constnats c2 and n0 where 0 <= f(n) <= cn2 for all n >= n0} 
+ 	* c2n2 is called the UPPER BOUND 
+	Note: 
+	log n <= n^(1/2) <= n <= nlogn <= n^2 <= n^3 <= 2^n <= n! -- Cool Progression 
+	* We can say an algorithm is an nlogn, n2 or 2^n algorithm. It basically means the algorithm is 0(nlogn) e.t.c. 
+	* From the above, it's obvous that the fastest algorithm is a logn algorithm. But, there is 0(1) algorithm. Which is fastest. 
+	* O(1) is called constant time algorithm like searching an array using indexes.
+	* O(n) is called linear search algorithm. Because using it's worst case it considers the entire length of the input. Example is when 		searching for a particular number in unordered array. THe worst  case assumes the number is not in the array hereby searches through the 	entire array which is O(n). e.t.c. 
+
+FIVE 
+***********
+Search and Sort Algorithm 
+	Selection Sort O(n^2) 
+	- Starts from the beginning, find the smallest number and swap at the element in the current index, 
+	- current index is sorted, move to the next number and do 1 again until all elemenets is sorted. 
+
+	Insertion Sort 
+	- Great for sorting small lists 
+	- Greaet for sorting lists with nearly ordered items. 
+
+SIX 
+**********
+Stable vs Unstable Algorithms 
+	- A stable algorithm preserves the order of equal elements while sorting. THat is, while sorting if two elements are equal valued, their 			positions are relatively preserved. 
+	- An unstable algorithm does not preserve the order of equal valued elements. 
+
+	* Try as much as possible to make your algorithms stable. This can be seen in an insertion sort when doing comaprion with >= or <= rather 		than > or < 
+
+SEVEM
+***********
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+********************************************************************************************************************************
+********************************************************************************************************************************
+********************************************************************************************************************************
+
+
 *	An ALGORITHM is any well-defined computational procedure that takes some value, or set of values, as input and produces some value, or set of 		values, as output.
 
 *	an INSTANCE of a problem consists of the input (satisfying whatever constraints are imposed in the problem statement) needed to compute a 		solution to the problem.

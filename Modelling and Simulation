@@ -1,0 +1,377 @@
+MOdelling And Simulation 
+
+UNIT 1 
+--------------------------------------------
+Basics of Modelling and Simulation 
+--------------------------------------------
+
+Modelling and Simulation allows you to deal with uncertainty and imprecision in a qunatifiable way.. 
+
+What is a Mode? 
+	* A model is a plan, representation, pattern designed to show the MAIN OJBJECT or the WORKINGS of the MAIN OBJEC 
+	* It can also be said to bbe a physical or hypothetical representation of a REAL WORLD element (event, concept, objects) 
+
+What is Modelling? 
+	* MOdelling is the process of generating conceptual, mathematical, graphical and or abstract models. 
+
+What is Simulation? 
+	* It is the manipulation of a model in such a way that it operates in time or space to compress it. That is, simulation helps in 		experimenting with models in order to gain adequate information about the system and thus make decisions. Simuation can be done either by 		hand or with the help of a computer. Simulation is also iteratable to gain sufficient kknowledge of the system under consideration. 
+
+MOdelling and Simulation is a discipline for developing a level of understanding of the interaction of a part o a system, and the whole system. 
+
+Examples of Modles include
+ 	* Newton's model of the movement of planets and masses. 
+	* A physical models of real world airplanes use in predicting how real world airplanes operates and behaves in some certain coonditions. 
+
+Types of Models 
+	* Physical / Iconic Models
+		- Car Model, AIrplane model, railway model e.t.c. 
+	* Mathematical Model 
+		- Used for predictive purpose with the help of mathematical expressions / relationships. 
+	* Analogue Model 
+		-  Using some other entities to represent the real world entity. 
+	* Heuristic Model  
+	* Deterministic Model 
+	* Stochastic Model 
+	* Simulation MOdels 
+		- Here real world entities are presented by random numbers instead of physical entities.
+
+Advantages of MOdelling 
+	* IT is safer 
+	* It is less expensive 
+	* Easier to control than their real world counterpart 
+
+Modeling Procedure 
+	* Examine the real world object / event or concept 
+	* Extract the essential features of this real world object 
+	* Constrcut a model for the real world object using the extracted features 
+	* Experiment wiith the constructed model 
+	* Draw conclusions from these experiments 
+	* If a further refienement is necessary, then re-examinen the model and re-iteratte the entire process. 
+	* Implement 
+
+===============================================================================================================================================
+===============================================================================================================================================
+UNIT 2 
+--------------------------
+Random Numbers 
+-------------------------
+How to Generate Random Numbers 
+	* Random Numbers can be defined as numbers that show consistent pattern with other number in the series and are neither affected by the 		preceding numbers or predicted from it. 
+	* A random number can be generated with the help of an algorithm called the "Congruential Generator"  that is a SEED (a number with a 		constant number of digits) and multiplied wiith another anumber of the same number of digits, the digits from the right end of 			their result becomes the new seed and so on and forth..  
+
+Ways of Generating PSEDUO-RANDOM NUMBERS 
+	- Using Computer Languages such as BASIC 
+	- Using a DIE 
+	- Using the SLip-in-a-box experiment (Where some numbers are placed in a box, taken out one at a time with replacement).. 
+
+Using the RND, RANDOMIZE AND RANDOMIZE TIMER in BASIC 
+	- RND generates a pseudo-random number between 0 and 1.
+	- These pseudo-random numbers can be multiplied with a particular digit (N) to get pseduo-random numbers between 0 and N-1 inclusively. 
+	- RANDOMIZE uses a SEED to generate random numbers. This seed could be chosen by a user via a prompt e.t.c. 
+	- (RND * N+1-P)+P generates a random number between N and P 
+
+	Example Program 
+	REM This program prints a random number five times. 
+	FOR X% = 1 TO 5 
+		PRINT RND 
+	NEXT X%
+	END 
+ 
+	REM This program printsa random number using a seed giving vvia a prompt by the user. 
+	RANDOMIZE TIMER 
+	FOR N% = 1 TO 5 
+		PRINT RND 
+	NEXT N% 
+	END 
+
+	Properties of a Good RNadom NUmber GNerator 
+	- Fast 
+	- Uniform DIstribution 
+	- DOesn't use large memory 
+	- Isn't degenerate 
+	- Must be able to generate different set of random numbers. 
+	- Must have long period (Thi hould be the time it takes to generate another such of the same set of random numbers generated).. 
+		* THe period can also be said to be the length of time the pgoram comes up with the same number as the SEED as this will lead to 
+			repeated sequence. 
+
+===============================================================================================================================================
+===============================================================================================================================================
+UNIT 3
+-------------------------------------
+Congruential Random Number Generator 
+-------------------------------------
+Two numbers x and y are said to be CONGRUENT MODULO  if (x-y)is an INTEGRAL MULTIPLE of m. 
+Written as x = y(mod m). 84 = 4(mod 10). 84 - 4 = 80 which is a mulitple of 10. 
+
+In the congurential method of generating random numbers, the NEXT random number is generated from the last random number given an initial random number X0 called the SEED. 
+	*	Xn+1 = (aXn + c)mod m Where a and c < m  (This typically generates a random number between 0 and 1 
+	* 	Xn+1 = (aXn + c)(mod m +1 -P) + P 	(This generates random number between M and P where m > P 
+	*	Consequentially from the above, X will be less than m
+	* 	Note that the PERIOD of the above function depends on the value of "a" and the SEED. Therefore this numbers must be chosen 			manually and carefully rather than generated randomly. 
+	* 	If c is 0 from the above the congruential method is termed Multiplicative Cong.. otherwise it is termed Mixed Congr.. 
+	* 	A Multiplicative Cong.. could therefore be rewritten as rN = (arN-1)mod m
+	*	The above can be done in QBasic using RND(A SEED + C) MOD M
+	
+	Choices of a, c and m 
+	-	Since period is heavily dpendent of the values of a c and m, Donald Knuth in his book "The Art of Computer Programming proposed 		effiient ways of chosing a, c and m in order to maximize the length of time until the initial SEED is generated and previousy 			generated numbers repeated. 
+	-	Some of his propositions include 
+		* If M is prime, we can let C be 0 
+		* m and c are relatively prime 
+		* if q is ap prime number that divides m, then q divides a-1
+		* if 4 divides m, then 4 divides a-1 
+	Also, note that the highest value m can be is dependent on the word-lenght of the computer. Therefore given that a computer is r bits word 		length, then, the highest value of m = 2^r-1. 
+
+	Exercise: Write a program that gnerates 20 random number between 1 and 64. 
+	DECLARE RAND (X)
+	CLS: REM Mixed Congruential Method
+	DIM SHARED SEED
+	SEED = TIMER
+	FOR K% = 1 TO 20
+		SEED = RAND (SEED)
+		PRINT SEED: SPC(2)
+	NEXT K%
+	END
+	
+	REM: The QBasic function below implenents A RND function using the Mixed Congruential Method.. 
+	FUNCTION RAND (SEED) ‘Beginning of function subprogram
+	CONST M = 64 A = 27, C = 13
+	IF SEED = THEN SEED = SEED + M
+	SEED = (a* SEED + C) MOD M + 1
+	RAND = SEED
+	END FUNCTION
+
+OTHER METHODS OF GENERATING RANDOM NUMBERS INCLUDE 
+	-  RANECU Random Number Generator 
+		RANECU is a fortran code for generating random numbers between 0 and 1 and has a period not excedding 81012. 
+	- Quadratic Congruential Method 
+		* Xn + 1 = (dX^2n + cXn + a) modulo m (Where m must be a poser of 2) and X0 is the initial seed 
+	- Mid-square method 
+		* Xn + 1 = Nx^2
+		* THis works by squaring the seed and taking the four middle numbers as the new seed by squaring it again to generate theext and 			   so on.. It is less efficient, degenerates easily and takes a lot of time to simulate 
+	- Mid-product method 
+		* Xn + 1 = cXn
+		* This is similar to the mid-square method except that instead of squaring the seed, the seed is multiplied by a constant c and 		  -the middle number i taken as the new seed and then mulitplied by another constant c and so on. 
+	- Fibbonaci Method  
+		* THis is only of historical significance and has dentrimental and limiting characteristics. 
+
+Exercises Solution 
+1.	Generate 15 random numbers between 1 and 50 in 	QBasic 
+		REM This program gnerates  15 random numbers between 1 and 50 	
+		FOR N% = 1 TO 15 
+			PRINT (RND * 1+1-50) + 50	
+		NEXT N%
+		END
+
+2.	Produce a table of random numbers using multiplicative congruential method, using a =5, m =8 and X0 = 4. Draw an inference from your 		solution. 
+	Formula to use is Xn+1 = (aXn + c)modulo m But since it is multiplicative and not mixed c = 0. Therefore, it becomes 
+	Xn+1 = aXn mod m OR Xn = aXn-1 mod m 
+	When n = 0, X0 = 4 
+	X1 = aX0 mod m  - (5 x 4) % 8 = 4 (Note we are gettting the remainder since we are using modulo)
+	X2 = aX1 mod m - (5 x 4) % 8 = 4 
+	Inference - It produced the same set of integers... 
+
+3.	Write a QBASIC function that can be referenced as computer random number between 30 and 100 using mixed congruential method.
+	Solution.. 
+	REM: The QBasic function below implenents A RND function using the Mixed Congruential Method.. 
+	FUNCTION RANDOMIFY () ‘Beginning of function subprogram
+		NUMBER = (RND * 30+1-100)+100
+	END FUNCTION
+
+===============================================================================================================================================
+===============================================================================================================================================
+UNIT 4 
+-------------------------------------------
+Monte Carlo Methods 
+-------------------------------------------
+	-	Monte Carlo methods are a class of computational algorithms that rely on repeated random inputs to compute their results. Used in 			simulating physical and mathematical systems. Used for modelling phenonmena with significant uncertainty in inputs and a number of 			coupled degrees of freedom.
+
+	-	Monte Carlo is an algorithm for computers that is used to simulate the behaviour of other systems. It uses randomness and 			statistics to get a result. It is a computation process that uses random numbers to produce an outcome(s). Instead of having fixed 			inputs, probability distributions are assigned to some or all of the inputs. This will generate a probability distribution for the 			output after the simulation is run
+
+	Monte Carlo Algorithm Steps 
+	* Define a domain of possible inputs 
+	* Generate input randomly from the domain using some probability distribution 
+	* Apply some deterministic computation using these inputs. 
+	* Aggregate the outcome of each input into the final result. 
+
+	- A good application of Monte Carlo is in evaluating  a multi-dimensional integral function as it does not suffer from the curse of 		dimensionality. CUrse of dimensionality is when a method yields  inaccurate result as the dimension of a problem (integral) increases. 
+	
+	- The more the input size for a typical Monte-Carlo the lesser the standard error. Monte-carlo is also a non-determnistic modelling method.
+
+	Applications of Monte Carlo 
+	- Physical Science 
+		* Used in models that form the basis of modern weather forecast operations
+		* Designing detectors
+		* Modelling the galaxy 
+		* Statistical, Computational and Experimental physics 
+
+	- Visual Design 
+		* Used for genereating computer generted films  
+
+	- Finance and Business 
+		* Used in Company evaluation and financial derivative evaluation 
+	
+	- Telecommunication 
+		* Used in planning wireless network. A typical wireless network design must put into consideration the users that will use this  			sevice, teir locations and the kind of services they would want to get. THus Monte Carlo is used to generate these users and 			theire respective states in orde to caarry out computations and arrive at an evauated result with the generated parameters.
+	
+	- Games 
+	- Engineering 
+	- Mathematics 
+		In mathematics the Monte-carlo method are used to solve problems which are difficult to solve analytially. Some of these include 
+		* Integration 
+		* Optimization 
+		* Inverse Problems 
+	
+===============================================================================================================================================
+===============================================================================================================================================
+UNIT 5
+-------------------------------------------
+Statistical Distribution Functions 
+-------------------------------------------
+	What is Statistics? 
+	THe field of statistics is concerned with the the collection, description and interpretation of data. 
+
+	Statistical DIstribution? 
+	This describes the number of times each number of possible outcomes occurs in a sample. 2As, 4Cs e.t.c. 
+
+	Measures of Central Tendency 
+	Mean, Median, Mode (Don't tell me you can't do this off hand) hehehehehe
+
+	Measures of Variation 
+	Range, Standard Deviation (CHecks the average distance of each data point against the mean).
+	StDev (Summation of the (difference between each data point and the mean) divided by d total number of data point (Using absolute values) 
+	
+	Graphs 
+	Bar, Double Bar, Histogram, PIe CHart 
+
+	Continuous vs Discrete Distribution 
+	A continuous distribution has INFINITE number of possible values while a discrete distribution has a finite number of possible values. 
+
+	Normal Distribution
+	A normal distribution is a continuous distribution that is bell-shaped. It can estiamates the probabilities over a continuous interval of 		data value. 
+	* THe graph of a normal distribution depends on mean and standard deviation. Data are likely to be at the mea than farther from the mean.
+	* The mean determeines the CENTER OF THE GRAPH 
+	* The standard deviation determines the WIDTH and HEIGHT of the graph. (THe larger the stdev the short and wider the graph and vice versa.
+	Normal Distributoin Equation 
+	Y = [ 1/σ * sqrt(2π) ] * e -(x - μ)2/2σ2
+	Where o- is stdev, x is a random variable (Also called the normal random variable), -u is the mean and e is 2.71828 
+
+	Standard Normal Distribution 
+	This is a special case of a normal distribtion that occurs when mean is 0 and stdev is 1.  At this point the normal random variable is 		called a z-score. 
+	This equation is used oo transfrom a normal random variable to a z-score
+	z = (X - μ) / σ
+	
+	Using the Normal Distribution as a Model for Measurement 
+	- Transform the normal random variable to a z-score 
+	- Find the probability using an online calucalato e.t.c. 
+
+	Skewed Distribution 
+	SKewness is the degree of assymetry or departure from symmetry of a distribution 
+	Skewness = mean - mode / stdev OR
+	Skewness = 3(mean - median) / stdev These are called Pearson's first and second coefficients of skewness (Both Eq. 1 and 2) 
+
+	
+===============================================================================================================================================
+===============================================================================================================================================
+UNIT 6
+-------------------------------------------
+Common Probability Distribution 
+-------------------------------------------
+Probability is the numerical assessment of likelihood on a scale of 0 (impossibility) to  1 (absolute certainty).  
+
+	Deterministic vs Probabilistic Simulation +++++++++++++++++
+	In a Deterministic simulation, the input parameter for a model are represented with a single value which is either a (best guess value or 		worst case value. This is not well suited to making decisions as it can nt quantiatively address the inherent risks and uncertainty that 		are present.  (If I learn java, I will get a job). This is not taking into consideration the inherent uncertaiinties in getting a job. 
+
+	Probabilistic Simulation on the other hand, inputs are represented as probability distributions therefore, uncertainities can be 		adeequately quantified. (If I learn java, there is a 50% chance that I wll get a job). This has taken uncertainties into consideration. 
+	
+	Probability Definition 
+	Frequentist: THe definition of probability by a frequentist is the relative frequency of occurence of a random event in the long long run 		in an experiment's outcome. 
+
+	Bayesian: Probability for a Bayesian is a way to represent an individual degree of belief in a statement given an evidence. 
+
+	Probability Distribution 
+	A Prob. Dist. gather together all possible outcomes of a random varaible and summarizes these outcomes by indicating the probability  for 		each of them. 
+
+	Random Variable
+	A random variable can be discrete or continuous. It is discrete it the variable has finite or countable number of outcomes and continuous 		if the variable has infinite possible outcomes. Discrete: Days of the week. Continuous: Yearly interest rate e.t.c. 
+	
+	Note: A Prob. Dist. is said to be uniform if the probability for each value of it's random variable is the same. For example the 		probability of getting a Monday or Tuesday from the days of the week (Discrete Random Variable) is the same. The probabillity of getting a 		1, 2, or 3 from a fair die (Discrete Random Variable)  is uniform. 
+
+	Probability Function 
+	Properties of a probability function: 
+	FOr a given random variable, foor each element in this random varaible 
+	- 0 <= p(x) <= 1 for discrete random variable and 0 <- f(x) <= 1 for continuous random variable 
+	- The summation of the probabilities of individual events of the random variable must be equal to 1. That is 
+	* p(x1) + p(x2) + p(x3) = 1 
+
+	Probability Density Function
+	The probability density function -- (f(x)--  iis a continuous random variable proability function, this unlike p(x) above for discrete 		values 	does nt take into the consideration the probabilities of individual events because it's values are not bounded or infinite. 		Therefore, it takes into consideration the probabilities of a range of values. 
+
+	Mathematical Treatment of Probability Theories 
+	- Probability of an event A occuring is given as 			Pr(A)
+	- Probability of not an even A not occuring is given as 		1 - Pr(A)
+	- Probability of A or B [A U B) 					Pr(A) + Pr(B) - Pr(A n B) Independent events 
+										Pr(A) + Pr(B) 		  Mutually Exclusive Events 
+
+	- Probability of A and B (A n B)					Pr(A|B) x Pr(B)		  Mutually Exclusive Event 
+										Pr(A) x Pr(B) 		  Independent Events 
+
+	- Probability of A given B  						Pr(A n B) / Pr(B) 
+
+	Probability Theory 
+	This is a mathematical science that permits one to ind the probability of an event using the probability of some other events connected in 		some way. 
+	- There are two attempts to formalizing probability which are 
+	* Kolmogorov and Cox respectiively. 
+
+	The classical definition of probability 
+	Pr(A) = r/s 
+	Where r = number of outcomes favourable to A 
+	      s= number of all equally ikely outcomes 
+	This states that the probability of an event A is the ratio of (r) number of outcomes FAVOURABLE to A to the ratio  of all equallly LIKELY 		outcomes (s).  For an example, given two fair dice, the probability of obtaining "the sum of 4" is given as (1,3), 		(2,2), 		(3,1). That is three outcomes are favourable to this event and the number of all equally liekly evnets  is 36. Therefore, from Pr(A) = 		r/s, 3 / 36 = 12.
+
+	Probability Distribution 
+	A probability distribution identifies each value of a random variable (when the variable is discrete) or the probability of a value 		fallling within an interval when the variable is continuous. This distribution also describes the range of possible value in which a 		random variable could attain and the probability that nay value of th random varaible falls within a subset of that range... COOL 
+
+	Common Probability Distributions 
+	Guassian Distribution (Most Common Continuous Distribution) - Real Valued Quantities that grows linearly) 
+	Log Normal Distribution 				    - Real Valued Quantities that grow exponentially (prices, population e.t.c) 
+	Discreete Uniform Distribution 				    - Real valued quantities that are beliefved to be uniformly distributed. 
+	Bernoulli Distribution (Yes or No events) 		     - Related to Bernoulli trials. 
+	Binomial Distribution (only positive occurences of a Bernoulli trials) - Related to Bernoulli trials 
+	Chi-square distriibution 				     - Related to hypothesis testing using using normal distribution 
+	F-Distriibution  						     - Same as above 
+
+	
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+In a nutshell, a model is the obbject, while simulation is the experimentation with the object to gain adequate knowledge about ow it ork and to make deductie decisions afterwards.. 
